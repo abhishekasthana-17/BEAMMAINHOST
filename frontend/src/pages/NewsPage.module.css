@@ -1,0 +1,40 @@
+/* Styles for NewsPage */
+.newsPage {
+  position: relative;
+  width: 100%;
+}
+
+
+/* News Article */
+.newsArticle {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Styling for the title within the newsArticle section */
+.newsArticle .section-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Styling for the description within the newsArticle section */
+.newsArticle .section-description {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .newsArticle .section-title {
+    font-size: 24px;
+  }
+
+  .newsArticle .section-description {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_content_heroes",
+  "info": {
+    "displayName": "Hero",
+    "description": "Hero section with title, subtitle, description, background and CTAs"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "backgroundColor": {
+      "type": "string",
+      "required": false,
+      "default": "default"
+    },
+    "primaryButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.button",
+      "required": false
+    },
+    "secondaryButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.button",
+      "required": false
+    }
+  }
+} 

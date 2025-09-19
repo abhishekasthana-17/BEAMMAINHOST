@@ -1,0 +1,50 @@
+/* ----- Social Bar ----- */
+.socialBar {
+  background-color: rgb(248, 248, 248);
+  color: #69727D;
+  padding: 0.8rem 0;
+}
+
+/* Container to constrain content width and align */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center; 
+  gap: 10px/* Align icons vertically */
+}
+
+.socialIcon {
+  margin-left: 1rem;
+  color: #69727D;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  text-decoration: none; /* Remove underline from links */
+}
+
+.socialIcon:hover {
+  color: var(--color-pink);
+}
+
+/* ----- Responsive Design ----- */
+/* ----- Tablet Responsive ----- */
+@media (max-width: 768px) {
+  .container {
+    justify-content: center;
+  }
+}
+
+/* ----- Mobile Responsive ----- */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 0.5rem; /* Reduce padding on small screens */
+    justify-content: center; /* Center icons on small screens */
+  }
+}

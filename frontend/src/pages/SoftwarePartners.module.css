@@ -1,0 +1,193 @@
+/* SoftwarePartners page styles */
+
+.link {
+  color: var(--color-teal);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Image section styles */
+.imageSection {
+  padding: 40px 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.imageContainer {
+  max-width: 1000px;
+  height: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 20px;
+}
+
+.codingImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Integration section styles */
+.integrationSection {
+  background-color: #f8e71c;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  background-image: url(../assets/icons/linhas_header_fundo_azul.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.integrationContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.integrationTitle {
+  font-size: 36px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 40px;
+  text-align: left;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.integrationBox {
+  background-color: rgba(94, 94, 20, 0.85);
+  padding: 40px;
+  border-radius: 4px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.iconWrapper {
+  font-size: 40px;
+  color: #f8e71c;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.featureDescription {
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Contact section styles */
+.contactSection {
+  padding: 80px 0;
+  background-color: white;
+  text-align: center;
+}
+
+.contactContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoContainer {
+  margin-bottom: 30px;
+}
+
+.beamLogo {
+  width: 140px;
+  height: auto;
+}
+
+.contactSubtitle {
+  color: var(--color-pink);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.contactTitle {
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  line-height: 1.3;
+}
+
+.emailButtonContainer {
+  margin-top: 20px;
+}
+
+.emailButton {
+  display: inline-block;
+  background-color: var(--color-pink);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.emailButton:hover {
+  background-color: #e4285e;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .integrationTitle {
+    font-size: 30px;
+  }
+
+  .contactTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .integrationSection {
+    padding: 40px 20px;
+  }
+
+  .integrationTitle {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .integrationBox {
+    padding: 30px;
+  }
+
+  .featureItem {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .iconWrapper {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .contactSection {
+    padding: 60px 0;
+  }
+
+  .contactTitle {
+    font-size: 1.8rem;
+  }
+
+  .emailButton {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+}

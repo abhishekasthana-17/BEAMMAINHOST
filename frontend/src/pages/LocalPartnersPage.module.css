@@ -1,0 +1,352 @@
+/* Styles for LocalPartnersPage */
+.heroDescription {
+  text-shadow: 0 0 15px #191660;
+  font-weight: 400;
+}
+.descriptionCTA {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.contactButton {
+  background-color: var(--color-pink);
+  color: white;
+  padding: 20px 60px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.contactButton:hover {
+  background-color: var(--color-charcoal);
+}
+
+/* Integration Section styles */
+
+.infoSection {
+  padding: 80px 0;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.infoTitle {
+  font-size: 2.5rem; /* Adjust as needed */
+  margin-bottom: 16px;
+  color: #333; /* Or use theme color */
+}
+
+.infoDescription {
+  font-size: 1.1rem;
+  color: #555; /* Or use theme color */
+  margin-bottom: 40px;
+  max-width: 800px; /* Limit width for readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px; /* Adjust gap as needed */
+  margin-top: 40px;
+}
+
+.infoBox {
+  padding: 50px 50px 45px;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  text-align: center; /* Text inside box is left-aligned */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center icon and text block */
+}
+
+.infoBoxIconContainer {
+  margin-bottom: 25px;
+  background-color: var(--color-teal);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoBoxIcon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  /*color: #fff;*/
+}
+
+.infoBoxTitle {
+  font-size: 1.4rem;
+  color: var(--color-charcoal);
+  margin: 0 0 15px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.infoBoxDescription {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Advantages Section */
+.advantagesSection {
+  background-color: var(--color-teal);
+  background-image: url("../assets/icons/linhas_header_fundo_azul.svg");
+  background-size: cover; /* Or contain, adjust as needed */
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 20px;
+  color: white;
+}
+
+.advantagesContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advantagesHeader {
+  text-align: left;
+  margin-bottom: 50px;
+  max-width: 800px; /* Limit header width */
+}
+
+.advantagesTitle {
+  font-size: 2rem; /* Adjust as needed */
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.advantagesSubtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.advantagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.advantageBox {
+  background-color: #06303ac7; /* Darker teal with transparency */
+  padding: 60px 40px;
+  border-radius: 10px;
+  text-align: left;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.advantageIcon {
+  width: 50px; /* Adjust icon size */
+  height: 50px;
+  margin-bottom: 25px;
+  /* Assuming icons are light/white SVGs or PNGs */
+  filter: brightness(0) invert(1); /* Makes dark icons white */
+}
+
+.advantageTitle {
+  font-size: 1.5rem; /* Adjust as needed */
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: var(--color-teal); /* Lighter teal/cyan for titles */
+  line-height: 1.2;
+}
+
+.advantageDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #f0f0f0;
+  flex-grow: 1; /* Allows description to take up remaining space */
+}
+
+/* FAQ Section styles */
+.faqSection {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faqHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.faqSubtitle {
+  color: var(--color-pink);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.faqTitle {
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.faqQuestions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  border-radius: 2px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faqQuestion {
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.faqQuestion h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.faqQuestion.active h4 {
+  color: var(--color-pink);
+}
+
+.faqArrow {
+  color: var(--color-pink);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faqAnswer {
+  padding: 0 25px 20px;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.faqAnswer p {
+  margin: 10px 0 0;
+}
+
+/* Contact CTA section styling */
+.contactCTASection {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 60px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.contactCTASubtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.contactCTATitle {
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.contactCTAButton {
+  display: inline-block;
+  background-color: var(--color-pink);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 50px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(255, 64, 129, 0.3);
+}
+
+.contactCTAButton:hover {
+  background-color: var(--color-charcoal);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 64, 129, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contactCTASection {
+    margin: 30px auto 40px;
+  }
+  .infoGrid {
+    grid-template-columns: 1fr; /* Stack boxes on smaller screens */
+  }
+
+  .infoSection {
+    padding: 60px 20px;
+  }
+
+  .infoBox {
+    padding: 40px 30px 35px;
+  }
+
+  .infoTitle {
+    font-size: 2rem;
+  }
+
+  .infoDescription {
+    font-size: 1rem;
+  }
+  .advantagesSection {
+    padding: 60px 20px;
+  }
+  .advantagesGrid {
+    grid-template-columns: 1fr;
+  }
+  .advantagesTitle {
+    font-size: 2rem;
+  }
+  .advantagesSubtitle {
+    font-size: 1.1rem;
+  }
+  .advantageTitle {
+    font-size: 1.3rem;
+  }
+  .faqSection {
+    padding: 60px 20px;
+  }
+  .faqTitle {
+    font-size: 1.8rem;
+  }
+  .faqQuestion h4 {
+    font-size: 1rem;
+  }
+}

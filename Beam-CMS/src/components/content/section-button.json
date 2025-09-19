@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_content_section_buttons",
+  "info": {
+    "displayName": "SectionButton",
+    "icon": "envelop",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "isExternal": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_certifications_certifications",
+  "info": {
+    "displayName": "Certification",
+    "icon": "certificate"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+} 

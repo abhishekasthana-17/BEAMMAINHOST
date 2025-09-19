@@ -1,0 +1,29 @@
+.homeAppButtons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.appStoreBtn img,
+.googlePlayBtn img {
+  height: 50px;
+  width: auto;
+}
+
+
+
+/* Custom styles to override Section component image positioning */
+:global(.section-content.content-left) {
+  flex-direction: row !important;
+}
+
+:global(.section-content.content-right) {
+  flex-direction: row-reverse !important;
+}
+
+@media (max-width: 768px) {
+  :global(.section-content.content-left),
+  :global(.section-content.content-right) {
+    flex-direction: column !important;
+  }
+}

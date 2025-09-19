@@ -1,0 +1,139 @@
+/* Social Share Component Styles */
+.socialShare {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.shareLabel {
+  font-size: 0.85rem;
+  color: #ff2066;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.shareButtons {
+  display: flex;
+  gap: 6px;
+}
+
+.shareButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  background-color: white;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shareButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 32, 102, 0.3);
+  border-color: #ff2066;
+}
+
+/* Platform-specific colors - all use Beam pink on hover */
+.shareButton.linkedin:hover {
+  background-color: #ff2066;
+  color: white;
+}
+
+.shareButton.twitter:hover {
+  background-color: #ff2066;
+  color: white;
+}
+
+.shareButton.whatsapp:hover {
+  background-color: #ff2066;
+  color: white;
+}
+
+.shareButton.facebook:hover {
+  background-color: #ff2066;
+  color: white;
+}
+
+.shareButton.telegram:hover {
+  background-color: #ff2066;
+  color: white;
+}
+
+.shareButton.email:hover {
+  background-color: #ff2066;
+  color: white;
+}
+
+/* Size variations */
+.socialShare.small .shareButton {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+
+.socialShare.small .shareLabel {
+  font-size: 0.75rem;
+}
+
+.socialShare.large .shareButton {
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+}
+
+.socialShare.large .shareLabel {
+  font-size: 0.9rem;
+}
+
+/* Job card specific styling */
+.jobCardShare {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.jobCardShare .shareLabel {
+  color: var(--color-pink);
+  font-weight: 600;
+}
+
+.jobCardShare .shareButton {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+}
+
+.jobCardShare .shareButton:hover {
+  border-color: var(--color-pink);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .socialShare {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+  }
+  
+  .shareButtons {
+    gap: 8px;
+  }
+  
+  .shareButton {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .shareLabel {
+    font-size: 0.9rem;
+  }
+}

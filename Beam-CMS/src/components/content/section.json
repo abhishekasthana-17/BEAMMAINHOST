@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_content_sections",
+  "info": {
+    "displayName": "Section",
+    "description": "Flexible content section with title, rich content, image and layout options"
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "required": false
+    },
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "content": {
+      "type": "richtext",
+      "required": false
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": ["left", "right", "center", "top", "bottom"],
+      "default": "right",
+      "required": false
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["default", "centered", "full-width", "two-column", "three-column"],
+      "default": "default",
+      "required": false
+    },
+    "backgroundColor": {
+      "type": "string",
+      "required": false,
+      "default": "white"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.button",
+      "required": false
+    }
+  }
+} 

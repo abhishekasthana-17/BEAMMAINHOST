@@ -1,0 +1,11 @@
+/* Styles for PrivacyPage */
+
+p {
+  margin-bottom: 26px;
+  line-height: 1.6;
+}
+
+b,
+strong {
+  font-weight: 700;
+}

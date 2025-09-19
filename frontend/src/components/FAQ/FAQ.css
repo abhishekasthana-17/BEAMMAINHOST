@@ -1,0 +1,150 @@
+/* FAQ styles */
+
+.faq-container {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.faq-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.faq-content {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  gap: 10px;
+}
+
+.faq-text {
+  /* Now primarily holds the questions list */
+  flex: 1; /* Take up available space */
+}
+
+.faq-subtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.faq-title {
+  color: var(--color-grey);
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.faq-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-question {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.faq-question h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.faq-question.active {
+  background-color: #f5f5f5;
+}
+
+.faq-question.active h4 {
+  color: var(--color-pink);
+}
+
+.faq-arrow {
+  color: var(--color-pink);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  padding: 0 20px 20px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.faq-answer p {
+  margin: 1;
+}
+
+.faq-illustration {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.faq-illustration img {
+  max-width: 100%;
+  height: auto; 
+  object-fit: contain;
+}
+
+@media (max-width: 992px) {
+  .faq-content {
+    flex-direction: column-reverse;
+    align-items: center; /* Center items when stacked */
+  }
+
+  .faq-text {
+    max-width: 100%;
+    /* Removed text-align: center; Questions should likely be left-aligned */
+    width: 100%; /* Ensure it takes full width */
+  }
+
+  .faq-illustration {
+    margin-bottom: 40px;
+    max-width: 80%; /* Adjust max-width for smaller screens */
+  }
+
+  /* Title font size adjustments remain */
+  .faq-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 40px 20px;
+  }
+
+  .faq-header {
+    margin-bottom: 30px; /* Reduce space below header */
+  }
+
+  /* Title font size adjustments remain */
+  .faq-title {
+    font-size: 1.75rem;
+    /* Removed margin-bottom as header handles spacing */
+  }
+
+  /* Question font size adjustment remains */
+  .faq-question h4 {
+    font-size: 1rem;
+  }
+}

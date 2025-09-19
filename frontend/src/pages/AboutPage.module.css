@@ -1,0 +1,732 @@
+/* Styles for AboutPage */
+
+.aboutPageContainer {
+  width: 100%;
+}
+
+/* First section with increased margin-top from hero */
+.firstSection {
+  margin-top: 80px !important; /* Force margin to ensure it overrides any other styles */
+}
+
+.firstSection :global(.section-subtitle),
+.firstSection :global(.section-title) {
+  text-align: left !important; /* Force left alignment */
+}
+
+.pageContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Section description styling */
+.sectionDescription p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.sectionDescription p:last-child {
+  margin-bottom: 0;
+}
+
+/* Image grid styling */
+.imageGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.imageRow {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.imageWrapper {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Make each image wrapper square */
+  aspect-ratio: 1/1;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.imageText {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.imageWrapper img {
+  /* COLOR SHOULD BE BLACK AND WHITE */
+  filter: grayscale(100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.imageWrapper:hover img {
+  /* HERE IS NEED TO TURN COLOR OF IMAGE */
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+/* Ranking image styling */
+.rankingImage {
+  max-width: 450px;
+  width: 100%;
+}
+
+.rankingImage img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Logo Showcase styling */
+
+.logoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  margin-top: 60px;
+  background-color: #f8f8f8;
+  padding: 40px 0;
+}
+
+.logoItem {
+  flex: 0 0 auto;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.logoItem img {
+  width: 100%;
+  height: 60px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.logoItem:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* 360 Image styling */
+.image360Container {
+  max-width: 500px;
+  width: 100%;
+}
+
+.image360Container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Contact CTA section styling */
+.contactCTASection {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 60px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.contactCTASubtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.contactCTATitle {
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.contactCTAButton {
+  display: inline-block;
+  background-color: var(--color-pink);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 50px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(255, 64, 129, 0.3);
+}
+
+.contactCTAButton:hover {
+  background-color: var(--color-charcoal);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 64, 129, 0.4);
+}
+
+/* Full Team section styling */
+.fullTeamSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0 40px;
+  text-align: center;
+}
+
+.fullTeamTitle {
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.fullTeamImageContainer {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.fullTeamImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Leadership section styling */
+.leadershipSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.leadershipHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.leadershipSubtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.leadershipTitle {
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.leadershipDescription {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-grey);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.teamMember {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamMember:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.teamMemberImage {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 110%; /* Aspect ratio in percentage for the image */
+  background-color: #ff5a92;
+}
+
+.teamMemberImage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/background-pattern.png") center center;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.teamMemberImage img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.teamMemberInfo {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.teamMemberName {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: 600;
+  
+}
+
+.teamMemberPosition {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Platform Features styling */
+.platformFeatures {
+  width: 100%;
+  max-width: 1100px;
+  padding: 20px 0;
+  margin-top: 30px;
+  text-align: left; /* Explicitly set left alignment */
+}
+
+.platformFeatures h3 {
+  color: #000; /* Default black color */
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: left; /* Explicitly set left alignment */
+}
+
+.featureItem {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  text-align: left; /* Explicitly set left alignment */
+  color: #000; /* Default black color */
+}
+
+.featureItem strong {
+  color: #000; /* Default black color */
+  font-weight: 600;
+}
+
+/* Vision Component styling */
+.visionComponent {
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px 0;
+  text-align: left; /* Explicitly set left alignment */
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.visionComponent h3 {
+  color: #000; /* Default black color */
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: left; /* Explicitly set left alignment */
+}
+
+.visionList {
+  list-style-type: none;
+  padding: 0;
+  text-align: left; /* Explicitly set left alignment */
+}
+
+.visionList li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #000; /* Default black color */
+  text-align: left; /* Explicitly set left alignment */
+}
+
+.visionList li:before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #000; /* Default black color */
+}
+
+.teamInvite {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #000; /* Default black color */
+  text-align: left; /* Explicitly set left alignment */
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .imageGrid {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+
+  .platformFeatures h3,
+  .visionComponent h3,
+  .logoShowcase h3,
+  .leadershipTitle,
+  .fullTeamTitle,
+  .contactCTATitle {
+    font-size: 1.75rem;
+  }
+
+  .rankingImage {
+    max-width: 80%;
+    margin-top: 20px;
+    margin-right: 8%;
+  }
+
+  .logoGrid {
+    gap: 20px;
+  }
+
+  .image360Container {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 70%;
+  }
+
+  .contactCTAButton {
+    padding: 14px 40px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .logoGrid {
+    gap: 15px;
+  }
+
+  .logoItem img {
+    height: 40px;
+  }
+
+  .leadershipDescription {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .fullTeamTitle {
+    margin-bottom: 20px;
+  }
+
+  .contactCTASection {
+    margin: 30px auto 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .imageRow {
+    flex-direction: column;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 16/9;
+  }
+
+  .platformFeatures h3,
+  .visionComponent h3,
+  .logoShowcase h3,
+  .leadershipTitle,
+  .fullTeamTitle,
+  .contactCTATitle {
+    font-size: 1.5rem;
+  }
+
+  .featureItem,
+  .visionList li {
+    font-size: 1rem;
+  }
+
+  .logoGrid {
+    gap: 10px;
+  }
+
+  .logoItem {
+    padding: 10px;
+  }
+
+  .logoItem img {
+    height: 30px;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .teamMember {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .contactCTAButton {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Retail Section - Pure HTML/CSS implementation */
+.retailSection {
+  position: relative;
+  width: 100%;
+  padding: 120px 0;
+  overflow: hidden;
+  color: white;
+}
+
+.retailSectionBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    var(--color-pink) 0%,
+    var(--color-charcoal) 100%
+  );
+  z-index: -2;
+}
+
+.retailSectionBgLines {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 70%;
+  background-image: url("../assets/icons/linhas_fundo-1.svg");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain;
+  opacity: 0.75;
+  z-index: -1;
+}
+
+.retailSectionContent {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 50px;
+  align-items: center;
+}
+
+.retailTextContent {
+  flex: 1;
+  text-align: left;
+}
+
+.retailSubtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--color-pink);
+  opacity: 0.9;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.retailTitle {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 80px;
+  font-weight: 700;
+  color: white;
+}
+
+.retailSubheading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.retailDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: white;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+.retailImage {
+  flex: 1;
+}
+
+.retailImage img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+
+@media (max-width: 992px) {
+  .retailSectionContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .retailTitle {
+    font-size: 2rem;
+  }
+
+  .retailImage,
+  .retailTextContent {
+    width: 100%;
+  }
+
+  .retailImage img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .retailSection {
+    padding: 50px 0;
+  }
+
+  .retailTitle {
+    font-size: 1.75rem;
+  }
+
+  .retailSubheading {
+    font-size: 1.5rem;
+  }
+}
+
+.rankingLogoLink {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.rankingLogoLink:hover {
+  opacity: 0.9;
+}
+
+/* Custom Ranking Section styling */
+.customRankingSection {
+  width: 100%;
+  text-align: left;
+}
+
+.rankingTitle {
+  color: var(--color-grey);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: left;
+}
+
+/*---------------------------------------
+  Share Section
+---------------------------------------*/
+.shareSection {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.shareContent {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.shareTitle {
+  color: var(--color-charcoal);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.shareDescription {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for share section */
+@media (max-width: 768px) {
+  .shareSection {
+    padding: 40px 0;
+  }
+  
+  .shareTitle {
+    font-size: 1.5rem;
+  }
+  
+  .shareDescription {
+    font-size: 1rem;
+  }
+}

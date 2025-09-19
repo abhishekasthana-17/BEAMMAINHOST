@@ -1,0 +1,77 @@
+/* SectionButton component styles */
+
+.sectionButton {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 60px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.subtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--color-pink);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 50px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(255, 64, 129, 0.3);
+}
+
+.button:hover {
+  background-color: var(--color-charcoal);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 64, 129, 0.4);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .button {
+    padding: 14px 40px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionButton {
+    margin: 30px auto 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+}

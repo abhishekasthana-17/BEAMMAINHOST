@@ -1,0 +1,217 @@
+/* Styles for InvestorsPage */
+/* HERO */
+.descriptionCTA {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.rankingLogoLink {
+  display: block;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.rankingLogoLink:hover {
+  transform: scale(1.1); /* Increase size by 10% on hover */
+}
+
+.rankingLogo {
+  height: 80px; /* Adjust logo size as needed */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.contactButton {
+  background-color: var(--color-pink); /* Match pink color */
+  color: white;
+  padding: 30px 70px; /* Slightly increased padding */
+  border: none;
+  border-radius: 10px; /* Increased border-radius for rounder corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem; /* Adjust font size if needed */
+}
+
+.contactButton:hover {
+  background-color: var(--color-charcoal); /* Darker pink on hover */
+}
+
+/* Integration Section styles */
+
+/* Add margin between paragraphs in the investor info section */
+.investorInfoSection .section-description > p {
+  margin-bottom: 2em !important;
+  line-height: 1.7;
+}
+
+/* Ensure the last paragraph doesn't have extra margin */
+.investorInfoSection .section-description > p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Bottom CTA section styles */
+.bottomCtaSection {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaSubtitle {
+  color: var(--color-pink);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.ctaTitle {
+  color: var(--color-charcoal);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 40px;
+}
+
+.ctaButton {
+  background-color: var(--color-pink);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 25px 60px;
+  border-radius: 10px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.ctaButton:hover {
+  background-color: #e0005a;
+}
+
+/* Custom Investor Section styling */
+.customInvestorSection {
+  width: 100%;
+  text-align: left;
+}
+
+.investorSectionTitle {
+  color: var(--color-grey);
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Money Work Section */
+.moneyWorkSection {
+  position: relative;
+  width: 100%;
+  height: 850px; /* Changed from 700px to 850px */
+  background-color: var(--color-teal);
+  color: white;
+  overflow: hidden;
+  padding: 0; /* Removed fixed padding to use flex centering */
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.moneyWorkSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/icons/linhas_header_fundo_azul.svg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.moneyWorkContent {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center; /* Changed from flex-start to center */
+  height: auto; /* Changed from 100% to auto */
+  width: 100%;
+}
+
+.moneyWorkTitle {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 35px; /* Increased from 20px to 35px */
+  text-align: left;
+  color: white;
+  text-shadow: 0 0 15px #191660;
+}
+
+.moneyWorkIntro {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 30px; /* Increased from 15px to 30px */
+  text-align: left;
+  max-width: 1000px;
+  text-shadow: 0 0 15px #191660;
+}
+
+.moneyWorkBox {
+  background-color: #06303ac7;
+  border-radius: 8px;
+  padding: 35px 35px;
+  margin-bottom: 30px; /* Increased from 15px to 30px */
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.moneyWorkBox p {
+  margin: 0;
+  font-size: 1rem; /* Reduced from 1.1rem */
+  line-height: 1.5; /* Reduced from 1.6 */
+  text-shadow: 0 0 15px #191660;
+}
+
+.moneyWorkBox strong {
+  margin-right: 8px;
+}
+
+.moneyWorkOutro {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 30px; /* Increased from 15px to 30px */
+  text-align: left;
+  max-width: 1000px;
+  text-shadow: 0 0 15px #191660;
+}
+
+@media (max-width: 768px) {
+  .moneyWorkSection {
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .moneyWorkTitle {
+    font-size: 2.2rem;
+  }
+
+  .moneyWorkIntro,
+  .moneyWorkBox p,
+  .moneyWorkOutro {
+    font-size: 1rem;
+  }
+}

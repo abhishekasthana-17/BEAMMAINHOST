@@ -1,0 +1,74 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "newsletterTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "quickLinksTitle": {
+      "type": "string"
+    },
+    "downloadTitle": {
+      "type": "string"
+    },
+    "copyrightText": {
+      "type": "string"
+    },
+    "appStoreUrl": {
+      "type": "string"
+    },
+    "googlePlayUrl": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "partner": {
+      "displayName": "Partner",
+      "type": "component",
+      "repeatable": true,
+      "component": "partner.partner"
+    },
+    "quickLinks": {
+      "displayName": "Quick Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "quick-links.quick-link"
+    },
+    "socialLinks": {
+      "displayName": "Social Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "social-links.social-link"
+    },
+    "certifications": {
+      "displayName": "Certification",
+      "type": "component",
+      "repeatable": true,
+      "component": "certifications.certification"
+    },
+    "legalText": {
+      "type": "string"
+    }
+  }
+}

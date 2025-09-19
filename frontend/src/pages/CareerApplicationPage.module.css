@@ -1,0 +1,19 @@
+/* Career Application Page Styles */
+
+.pageContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure the form container integrates well with the page */
+.pageContainer > div {
+  margin: 0;
+  padding: 0;
+}
+
+/* Override any global styles that might interfere */
+.pageContainer * {
+  box-sizing: border-box;
+}

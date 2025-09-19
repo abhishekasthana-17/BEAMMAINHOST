@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_partner_partners",
+  "info": {
+    "displayName": "Partner",
+    "icon": "hand-holding-heart"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

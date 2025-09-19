@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_hero_heroes",
+  "info": {
+    "displayName": "Hero",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "buttonUrl": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left"
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "enum": [
+        "Pink",
+        "Yellow",
+        "Teal"
+      ],
+      "default": "Pink"
+    }
+  }
+}

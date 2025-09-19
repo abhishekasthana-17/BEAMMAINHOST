@@ -1,0 +1,238 @@
+/* Page Share Component Styles */
+.pageShareContainer {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pageShareContainer.expanded {
+  transform: translateY(-50%) scale(1.02);
+}
+
+/* Toggle Button */
+.toggleButton {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff2066 0%, #ff4080 100%);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255, 32, 102, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.toggleButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(255, 32, 102, 0.4);
+}
+
+.toggleButton:active {
+  transform: scale(0.95);
+}
+
+/* Share Options Container - Updated for vertical layout */
+.shareOptions {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 16px 12px;
+  margin-top: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 60px;
+  position: relative;
+}
+
+.shareOptions.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.shareOptions::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none;
+  border-right: none;
+  transform: rotate(45deg);
+}
+
+/* Share Label - Hidden for vertical layout */
+.shareLabel {
+  display: none;
+}
+
+/* Share Buttons - Vertical Layout */
+.shareButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.shareButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.shareButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #ff2066 0%, #ff4080 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.shareButton:hover {
+  transform: translateY(-2px);
+  border-color: #ff2066;
+  box-shadow: 0 8px 20px rgba(255, 32, 102, 0.2);
+}
+
+.shareButton:hover::before {
+  opacity: 1;
+}
+
+.shareButton:hover i {
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+/* Platform-specific hover effects */
+.shareButton.linkedin:hover {
+  border-color: #0077b5;
+}
+
+.shareButton.twitter:hover {
+  border-color: #1da1f2;
+}
+
+.shareButton.whatsapp:hover {
+  border-color: #25d366;
+}
+
+.shareButton.facebook:hover {
+  border-color: #1877f2;
+}
+
+.shareButton.telegram:hover {
+  border-color: #0088cc;
+}
+
+.shareButton.email:hover {
+  border-color: #ea4335;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .pageShareContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    top: auto;
+    transform: none;
+  }
+  
+  .pageShareContainer.expanded {
+    transform: scale(1.02);
+  }
+  
+  .toggleButton {
+    width: 52px;
+    height: 52px;
+    font-size: 18px;
+  }
+  
+  .shareOptions {
+    min-width: 56px;
+    padding: 12px 8px;
+    margin-top: 10px;
+  }
+  
+  .shareButtons {
+    gap: 6px;
+  }
+  
+  .shareButton {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+/* Hide on extra small screens */
+@media (max-width: 480px) {
+  .pageShareContainer {
+    display: none;
+  }
+}
+
+/* Animation for appearing */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.pageShareContainer {
+  animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile animation */
+@media (max-width: 768px) {
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

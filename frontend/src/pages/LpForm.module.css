@@ -1,0 +1,235 @@
+/* Local Partners Form Styling */
+.formContainer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.partnersForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.formSection {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 30px;
+}
+
+.formSection h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.subheading {
+  font-size: 18px;
+  margin: 25px 0 15px 0;
+  color: #555;
+}
+
+.sectionDescription {
+  color: #777;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.gridFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .gridFields {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gridFieldsTriple {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .gridFieldsTriple {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.requiredStar {
+  color: #e74c3c;
+  margin-left: 4px;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: #2ec4b6;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(46, 196, 182, 0.1);
+}
+
+.phoneInputGroup {
+  display: flex;
+  align-items: center;
+}
+
+.countryCode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  padding: 0 12px;
+  height: 43px;
+  font-size: 14px;
+  color: #555;
+}
+
+.phoneInputGroup input {
+  border-radius: 0 6px 6px 0;
+}
+
+.errorInput {
+  border-color: #e74c3c !important;
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+.errorText {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.errorTextCheckbox {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 2px;
+  display: block;
+}
+
+.checkboxGroup {
+  margin-bottom: 20px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.checkbox label {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.link {
+  color: #2ec4b6;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.formActions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  background-color: #2ec4b6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #29b0a3;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  background-color: rgba(231, 76, 60, 0.1);
+  border-left: 4px solid #e74c3c;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+}
+
+.errorMessage p {
+  color: #e74c3c;
+  margin: 0;
+}
+
+.successMessage {
+  background-color: rgba(46, 204, 113, 0.1);
+  border-left: 4px solid #2ecc71;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.successMessage h3 {
+  color: #2ecc71;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.successMessage p {
+  color: #555;
+  margin: 0;
+}
+
+/* Teal background for Hero component */
+.bgTeal {
+  background-color: #2ec4b6;
+}

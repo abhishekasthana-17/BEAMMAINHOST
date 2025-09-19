@@ -1,0 +1,346 @@
+/* Styles for OsInstallationForm */
+
+.bgPink {
+  background-color: var(
+    --color-pink-light
+  ); /* Using a light pink from variables, adjust if needed */
+}
+
+.formContainer {
+  max-width: 1300px; /* Adjusted max-width for this form layout */
+  margin: 0 auto;
+  padding: 0px 0px 80px; /* Increased top padding */
+}
+
+.osForm {
+  background-color: #fff;
+
+  padding: 50px 40px;
+}
+
+/* Section Styling with Number */
+.formSection {
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+}
+
+.formSection:last-of-type {
+  border-bottom: none;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionNumber {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-pink); 
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.sectionHeader h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.sectionSubtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+.subSectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Form Group and Grid */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  font-size: 15px; /* Slightly smaller labels */
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+  display: block;
+}
+
+.requiredStar {
+  color: var(--color-pink); /* Pink asterisk */
+  margin-left: 3px;
+}
+
+.gridFields {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Responsive 2 columns */
+  gap: 20px 30px; /* Row and column gap */
+  align-items: start;
+}
+
+.gridFieldsInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Fixed 2 columns for nested grids */
+  gap: 20px;
+}
+
+/* Input Styling */
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="tel"],
+.formGroup input[type="url"],
+.formGroup textarea,
+.formGroup select {
+  padding: 12px 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: var(--color-pink);
+  box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.15); /* Pink focus ring */
+  outline: none;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formGroup select {
+  /* Add styles for select dropdown arrow if needed */
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px; /* Make space for arrow */
+}
+
+/* Radio Button Styling */
+.radioGroup {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.radioLabel input[type="radio"] {
+  cursor: pointer;
+  accent-color: var(--color-pink);
+}
+
+/* Store App Section Specific Layout */
+.storeAppSectionContent {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Fields take up space, image is auto width */
+  gap: 40px;
+  align-items: center; /* Vertically align items */
+}
+
+.storeAppFields {
+  /* Fields will be in the first column */
+}
+
+.storeAppImagePreview img {
+  max-width: 550px; /* Control image size */
+  height: auto;
+}
+
+/* Checkbox and Link */
+.checkboxGroup {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-top: 3px;
+  cursor: pointer;
+  width: auto;
+  accent-color: var(--color-pink);
+}
+
+.checkbox label {
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.link {
+  color: var(--color-pink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.formActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.submitButton {
+  background-color: var(--color-teal); /* Teal color from screenshot */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 50px; /* Adjusted padding */
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submitButton:hover {
+  background-color: #16a085; /* Darker teal */
+  transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error Styling */
+.errorInput {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.15);
+}
+
+.errorText {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 6px;
+  display: block;
+}
+
+.errorTextCheckbox {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 6px;
+  padding-left: 28px;
+  display: block;
+}
+
+.errorMessage {
+  background-color: #fdecea;
+  border: 1px solid #e74c3c;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 25px;
+  color: #c0392b;
+  text-align: center;
+}
+
+/* Success Message Styling */
+.successMessage {
+  background-color: #e8f8f5;
+  border: 1px solid var(--color-teal);
+  border-radius: 4px;
+  padding: 40px;
+  margin: 40px auto;
+  text-align: center;
+  max-width: 600px;
+}
+
+.successMessage h3 {
+  color: var(--color-teal);
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.successMessage p {
+  color: #333;
+  font-size: 16px; 
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .storeAppSectionContent {
+    grid-template-columns: 1fr; /* Stack fields above image */
+    gap: 30px;
+  }
+  .storeAppImagePreview {
+    text-align: center; /* Center the image */
+  }
+  .storeAppImagePreview img {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 40px 15px 60px;
+  }
+  .osForm {
+    padding: 30px 20px;
+  }
+  .sectionHeader h2 {
+    font-size: 24px;
+  }
+  .sectionSubtitle {
+    font-size: 15px;
+  }
+  .gridFields,
+  .gridFieldsInner {
+    grid-template-columns: 1fr; /* Stack fields */
+    gap: 20px;
+  }
+  .radioGroup {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  .submitButton {
+    width: 100%;
+  }
+}

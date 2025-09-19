@@ -1,0 +1,207 @@
+/* Hero styles */
+
+.heroContainer {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  overflow: hidden;
+  background: var(--color-pink);
+  color: white;
+  position: relative;
+}
+
+.heroContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/icons/linhas_header_fundo_azul.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 40px;
+}
+
+.heroImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Added classes for image position */
+.heroImage.left {
+  /* Default behavior, no specific style needed if text is on right */
+}
+.heroImage.right {
+  order: 1; /* Move image to the right in flex container */
+}
+
+.heroImage img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+}
+
+.heroTextContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroCategory {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: var(--font-bold);
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-weight: var(--font-bold);
+  text-transform: none;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.heroDescription {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-weight: var(--font-regular);
+  text-transform: none;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.heroButton {
+  display: inline-block;
+  background-color: white;
+  color: var(--color-pink);
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+  border: none;
+  cursor: pointer;
+  max-width: fit-content; /* Prevent button stretching */
+}
+
+.heroButton:hover {
+  transform: translateY(-3px);
+  background-color: var(--color-charcoal);
+  color: white;
+}
+
+/* App store buttons (if passed as children) */
+.appDownloadButtons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.appStoreButton,
+.playStoreButton {
+  display: inline-block;
+  background-color: #000;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+  }
+  /* Ensure image is above text */
+  .heroImage.left,
+  .heroImage.right {
+    order: -1; /* Image always first on mobile */
+    margin-bottom: 30px;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroTextContainer {
+    align-items: center;
+  }
+
+  .appDownloadButtons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    gap: 20px;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .heroDescription {
+    font-size: 0.9rem;
+  }
+
+  .heroContainer {
+    padding: 40px 0;
+  }
+
+  .heroButton {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Background color options */
+.bgPink.heroContainer {
+  background: var(--color-pink);
+}
+
+.bgYellow.heroContainer {
+  background: var(--color-yellow);
+}
+
+.bgTeal.heroContainer {
+  background: var(--color-teal);
+}
+
+.bgCharcoal.heroContainer {
+  background: var(--color-charcoal);
+}

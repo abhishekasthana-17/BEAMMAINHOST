@@ -1,0 +1,423 @@
+/* Section component styles */
+
+.section-container {
+  padding: 30px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 40px;
+  align-items: center;
+}
+
+/* ===== NEW LAYOUT SYSTEM ===== */
+
+/* CENTER LAYOUT - Stack everything vertically */
+.layout-center {
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.layout-center .section-text-container {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+
+.layout-center .section-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* FULL-WIDTH LAYOUT - For sections without images */
+.layout-full-width {
+  flex-direction: column;
+}
+
+.layout-full-width .section-text-container {
+  width: 100%;
+}
+
+/* Full-width alignment variations */
+.layout-full-width.text-align-left .section-text-container {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.layout-full-width.text-align-center .section-text-container {
+  margin: 0 auto;
+}
+
+.layout-full-width.text-align-right .section-text-container {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* TWO-COLUMN LAYOUTS */
+.layout-two-column {
+  flex-direction: row;
+  align-items: stretch; /* Changed from 'center' to make columns equal height */
+}
+
+.layout-two-column .section-text-container {
+  flex: 1;
+  max-width: 600px;
+}
+
+.layout-two-column .section-image {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  height: 100%; /* Ensure the image container can stretch */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image on left, text on right */
+.layout-image-left {
+  flex-direction: row-reverse;
+}
+
+/* Image on right, text on left */
+.layout-image-right {
+  flex-direction: row;
+}
+
+/* ===== IMAGE CONSTRAINTS ===== */
+.section-image img {
+  max-width: 800px;
+  /* max-height: 400px; --- REMOVED to allow vertical stretching */
+  width: 100%;
+  height: 100%; /* Changed from 'auto' to fill the container */
+  object-fit: cover; /* Changed from 'contain' to fill space without distortion */
+  border-radius: 8px;
+}
+
+/* For center layout, allow slightly larger images */
+.layout-center .section-image img {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+/* ===== TEXT CONTENT ===== */
+.section-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-subtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  max-width: 100%;
+}
+
+.section-title {
+  color: var(--color-grey);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: var(--font-bold);
+  max-width: 100%;
+}
+
+.section-description {
+  color: var(--color-grey);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+.section-description p {
+  margin-bottom: 10px;
+}
+
+.section-description p:last-child {
+  margin-bottom: 0;
+}
+
+.section-secondary-description {
+  color: var(--color-grey);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-action {
+  margin-top: 20px;
+}
+
+/* ===== TEXT ALIGNMENT ===== */
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+/* ===== BACKGROUND UTILITIES ===== */
+.bg-white {
+  background-color: white;
+}
+
+.bg-light {
+  background-color: #f9f9f9;
+}
+
+.bg-mint {
+  background-color: var(--color-teal);
+}
+
+.bg-pink {
+  background-color: var(--color-pink);
+}
+
+.bg-mint-gradient {
+  background: linear-gradient(135deg, var(--color-teal) 0%, #3d756e 100%);
+  color: white;
+}
+
+.bg-pink-gradient {
+  background: linear-gradient(135deg, var(--color-pink) 0%, #ff0844 100%);
+  color: white;
+}
+
+.bg-yellow {
+  background-color: var(--color-yellow);
+}
+
+.bg-charcoal {
+  background-color: var(--color-charcoal);
+  color: white;
+}
+
+.bg-purple {
+  background-color: var(--color-purple);
+  color: white;
+}
+
+/* ===== SPECIAL CARD STYLES ===== */
+.bg-problem {
+  background-color: #e6f0f7;
+  position: relative;
+  margin-bottom: 50px;
+  padding: 50px 0;
+  border-radius: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.bg-problem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/icons/linhas_header_fundo_azul.svg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.bg-solution {
+  background-color: #e6f7ef; 
+  position: relative;
+  margin-bottom: 50px; 
+  padding: 50px 0; 
+  border-radius: 20px; 
+  max-width: 1000px; 
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+}
+
+.bg-solution::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/icons/linhas_header_fundo_azul.svg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.bg-problem .section-title,
+.bg-solution .section-title {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  padding: 5px 0;
+}
+
+.card-label {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 6px;
+  color: white;
+  font-weight: var(--font-bold);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.bg-problem .card-label {
+  background-color: var(--color-purple);
+}
+
+.bg-solution .card-label {
+  background-color: var(--color-teal);
+}
+
+.bg-problem .section-content,
+.bg-solution .section-content {
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.bg-problem .section-text-container,
+.bg-solution .section-text-container {
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+}
+
+.bg-problem .section-image,
+.bg-solution .section-image {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== RESPONSIVE BEHAVIOR ===== */
+@media (max-width: 768px) {
+  /* Force everything to stack on mobile */
+  .layout-two-column,
+  .layout-image-left,
+  .layout-image-right {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .layout-two-column .section-text-container,
+  .layout-image-left .section-text-container,
+  .layout-image-right .section-text-container {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .layout-two-column .section-image,
+  .layout-image-left .section-image,
+  .layout-image-right .section-image {
+    max-width: 100%;
+  }
+
+  .section-container {
+    padding: 20px 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .bg-problem .section-title,
+  .bg-solution .section-title {
+    font-size: 2.2rem;
+    padding: 3px 0;
+  }
+
+  .section-description {
+    font-size: 0.9rem;
+}
+
+  /* Make sure images scale properly on mobile */
+  .section-image img {
+    max-width: 100%;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 992px) {
+  .section-content {
+    gap: 30px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .bg-problem .section-title,
+  .bg-solution .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-white {
+  color: white;
+}
+
+.text-dark {
+  color: #333;
+}
+
+.has-border {
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+/* Play button for videos */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-pink);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 0 15px 25px;
+  border-color: transparent transparent transparent white;
+  margin-left: 5px;
+}

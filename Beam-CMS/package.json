@@ -1,0 +1,38 @@
+{
+  "name": "beam-cms",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "5.13.0",
+    "@strapi/plugin-users-permissions": "^5.23.4",
+    "@strapi/provider-email-sendgrid": "^5.18.0",
+    "@strapi/provider-upload-aws-s3": "^5.18.0",
+    "@strapi/strapi": "^5.23.4",
+    "better-sqlite3": "11.3.0",
+    "pg": "^8.16.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "5a5c6cf5-db21-4cbb-bf7b-05c41f5cdb3a",
+    "installId": "49cea35f5e24c7fa236942e7cd191ec0001cf2f06b8d80fd22dbe30b6ec5c7c7"
+  }
+}

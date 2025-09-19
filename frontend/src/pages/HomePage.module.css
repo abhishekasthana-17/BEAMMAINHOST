@@ -1,0 +1,823 @@
+/*
+========================================
+  HomePage.module.css
+========================================
+*/
+
+.homeAppButtons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.appStoreBtn img,
+.googlePlayBtn img {
+  height: 50px;
+  width: auto;
+}
+
+/*---------------------------------------
+  Ranking Section
+---------------------------------------*/
+.rankingSection {
+  padding: 60px 0;
+}
+
+.rankingContent {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 50px;
+  align-items: center;
+}
+
+.rankingImageContainer {
+  flex: 1;
+}
+
+.rankingImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.rankingTextContainer {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.rankingSubtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+}
+
+.rankingTitle {
+  color: var(--color-grey);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: var(--font-bold);
+}
+
+.rankingDescription {
+  color: var(--color-grey);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.rankingLogoWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rankingLogo {
+  max-width: 180px;
+  height: auto;
+}
+
+.rankingLogoLink {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.rankingLogoLink:hover {
+  opacity: 0.9;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 992px) {
+  .homeAppButtons {
+    justify-content: center;
+  }
+
+  .rankingContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .rankingImageContainer {
+    order: -1; /* Move image to top on smaller screens */
+  }
+
+  .rankingTextContainer {
+    align-items: center;
+  }
+
+  .rankingLogoWrapper {
+    justify-content: center;
+  }
+
+  .featureCard {
+    width: calc(50% - 20px);
+  }
+  .featureTitle {
+    font-size: 2.5rem;
+  }
+
+  /* Stats adjustments for tablets */
+  .statsSection {
+    padding: 0 30px;
+  }
+
+  .statsGrid {
+    gap: 30px 40px;
+    padding: 0 10px;
+  }
+
+  .statItem {
+    padding: 0 5px;
+  }
+
+  .statNumber {
+    font-size: 3rem;
+  }
+}
+
+/* Small Devices (Phones, etc.) */
+@media (max-width: 768px) {
+  .homeAppButtons {
+    margin-top: 20px;
+  }
+  /* Removed app button size adjustments, let them be natural or styled globally */
+
+  /* Using global .card-style */
+
+  .featureCard {
+    width: 100%;
+    max-width: 400px;
+  }
+  .featureTitle {
+    font-size: 2rem;
+  }
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 30px;
+    padding: 10;
+    width: 90%;
+  }
+
+  /* Make the 3rd stat item span both columns for the 2, 1, 2 layout */
+  .statsGrid .statItem:nth-child(3) {
+    grid-column: span 3;
+    /* You might want to ensure its content is also centered if it doesn't look right */
+    /* For example, if .statItem is not already text-align: center by default: */
+    /* text-align: center; */
+  }
+
+  .statNumber {
+    font-size: 2.8rem;
+  }
+  .statDescription {
+    font-size: 0.9rem;
+  }
+
+  /* Stack CTA boxes */
+  .ctaBox {
+    flex-direction: column;
+    text-align: center;
+    align-items: center; /* Center flex items horizontally in column layout */
+    padding: 30px 20px; /* Adjust padding */
+    margin: 30px 20px;
+    line-height: 1.6;
+  }
+
+  .ctaBoxText {
+    margin-right: 0;
+    margin-bottom: 30px; /* Add space below text when stacked */
+  }
+
+  .ctaBoxAction {
+    margin-left: 0; /* Reset margin-left */
+    margin-top: 0;
+    width: 100%; /* Ensure the action container takes full width */
+    display: flex; /* Make it a flex container */
+    justify-content: center; /* Center the button within this container */
+  }
+
+  .problemSolutionContainer {
+    margin-bottom: 40px;
+    padding: 10px;
+  }
+
+  .marketTitle {
+    font-size: 2rem;
+  }
+
+  .marketDescription {
+    text-align: center;
+  }
+
+  .statsSection {
+    padding: 0 15px;
+    margin: 40px auto;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .statNumber {
+    font-size: 2.8rem;
+  }
+
+  .statDescription {
+    font-size: 0.9rem;
+    padding: 0 5px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 576px) {
+  .appStoreBtn img,
+  .googlePlayBtn img {
+    height: 45px;
+  }
+  .featureSection {
+    padding: 40px 0;
+  }
+  .featureSubtitle {
+    font-size: 0.9rem;
+  }
+  .featureTitle {
+    font-size: 1.75rem;
+  }
+  /* Adjust CTA text sizes */
+  .ctaBoxTitle {
+    font-size: 2rem;
+  }
+  .ctaBoxDescription {
+    font-size: 1rem;
+  }
+  .rankingSection {
+    padding: 40px 0;
+  }
+
+  .rankingTitle {
+    font-size: 2rem;
+  }
+
+  /* Stats section for smallest screens - switch to column */
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 15px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .statItem {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .statNumber {
+    font-size: 3rem;
+  }
+
+  .statDescription {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+/*---------------------------------------
+  Feature Section (Why Choose Beam)
+---------------------------------------*/
+.featureSection {
+  background: var(--color-pink);
+  color: white;
+  padding: 100px 0; /* Increased vertical padding */
+  position: relative;
+  overflow: hidden;
+  min-height: 800px; /* Set minimum height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  width: 100%;
+}
+
+.featureSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/icons/linhas_header_fundo_azul.svg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.45; /* Low opacity to ensure text is visible */
+  z-index: 0;
+}
+
+.featureSection > * {
+  position: relative;
+  z-index: 1;
+}
+
+.featureSectionHeader {
+  text-align: left;
+  max-width: 1200px;
+  width: 100%; /* Ensure full width */
+  margin: 0 auto 80px; /* Increased bottom margin for more space below header */
+  padding: 0px 40px;
+}
+
+.featureSubtitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  margin-bottom: 10px;
+  text-align: left;
+  line-height: 1.5; /* Added line-height for subtitle for better spacing */
+}
+
+.featureTitle {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: var(--font-bold);
+  text-align: left;
+  line-height: 1.4; /* Increased line-height for the main title */
+}
+
+.featureCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* Increased gap between cards */
+  max-width: 1200px;
+  width: 100%; /* Ensure full width */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.featureCard {
+  background-color: rgba(88, 28, 48, 0.8);
+  border-radius: 8px;
+  padding: 40px; /* Increased padding */
+  width: calc(25% - 30px); /* Adjusted for new gap */
+  min-width: 260px; /* Slightly larger min-width */
+  display: flex;
+  flex-direction: column;
+  min-height: 350px; /* Added minimum height */
+  justify-content: flex-start; /* Align content to top */
+}
+
+.featureIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 30px; /* Increased spacing after icon */
+}
+
+/* Feature Icons */
+.retailIcon {
+  background: url("../assets/icons/retail-icon.png") no-repeat center center;
+  background-size: contain;
+  filter: brightness(0) invert(1);
+}
+.customersIcon {
+  background: url("../assets/icons/customers-icon.png") no-repeat center center;
+  background-size: contain;
+  filter: brightness(0) invert(1);
+}
+.networksIcon {
+  background: url("../assets/icons/networks-icon.png") no-repeat center center;
+  background-size: contain;
+  filter: brightness(0) invert(1);
+}
+.tokenIcon {
+  background: url("../assets/icons/token-icon.png") no-repeat center center;
+  background-size: contain;
+  filter: brightness(0) invert(1);
+}
+
+.featureCardTitle {
+  color: var(--color-teal); /* Changed from white to teal */
+  font-size: 1.25rem;
+  margin-bottom: 25px; /* Increased bottom margin */
+  font-weight: var(--font-bold);
+  line-height: 1.4; /* Added line height for more spacing */
+}
+
+.featureCardDescription {
+  font-size: 0.9rem;
+  line-height: 1.8; /* Increased line height for more spacing between lines */
+  color: white;
+}
+
+/*---------------------------------------
+  Statistics Section
+---------------------------------------*/
+.statsSection {
+  max-width: 100%; /* Changed from 1200px to ensure no overflow */
+  width: 100%;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding doesn't add to width */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.statsMapContainer {
+  margin-bottom: 50px;
+  max-width: 100%;
+  overflow: hidden; /* Prevent map image from causing overflow */
+}
+
+.statsMapImage {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 20px;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.statItem {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.statNumber {
+  font-size: 3.5rem;
+  font-weight: var(--font-bold);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.statPink {
+  color: var(--color-pink);
+}
+.statPurple {
+  color: var(--color-purple);
+}
+
+.statDescription {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+  max-width: 100%;
+  white-space: normal; /* Ensure text wraps */
+  word-break: break-word; /* Break long words if needed */
+}
+
+/*---------------------------------------
+  CTA Sections (Become Us / Blog)
+---------------------------------------*/
+.ctaBox {
+  display: flex;
+  align-items: center;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 40px 60px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  background-color: white;
+}
+
+/* Wrapper for text content */
+.ctaBoxText {
+  margin-right: 20px;
+  
+}
+
+/* Title style within the CTA box */
+.ctaBoxTitle {
+  font-size: 2rem;
+  color: var(--color-pink);
+  margin-bottom: 10px;
+}
+
+/* Description style within the CTA box */
+.ctaBoxDescription {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* Wrapper for the action/button */
+.ctaBoxAction {
+  margin-left: auto; /* Push button to the right */
+  flex-shrink: 0;
+}
+
+/* Button style within the CTA box */
+.ctaBoxButton {
+  background-color: var(--color-pink);
+  color: white;
+  padding: 20px 70px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.ctaBoxButton:hover {
+  background-color: var(--color-charcoal);
+}
+
+/*---------------------------------------
+  Problem & Solution Container
+---------------------------------------*/
+.problemSolutionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+
+/* This will keep proper spacing between the sections */
+.problemSolutionContainer :global(.section-container:first-child) {
+  margin-bottom: 50px;
+}
+
+/*---------------------------------------
+  Custom Partners Section
+---------------------------------------*/
+.customPartnersSection {
+  padding: 50px 0;
+  background-color: #ffffff;
+}
+
+.partnersContent {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 50px;
+  align-items: center;
+}
+
+.partnersTextContainer {
+  flex: 1;
+  text-align: left; /* Explicitly set left alignment */
+}
+
+.partnersSubtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  text-align: left; /* Enforce left alignment */
+}
+
+.partnersTitle {
+  color: var(--color-grey);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: var(--font-bold);
+  text-align: left; /* Enforce left alignment */
+}
+
+.partnersDescription {
+  color: var(--color-grey);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left; /* Enforce left alignment */
+  white-space: pre-line; /* Preserve line breaks in the text */
+}
+
+.partnersImageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.partnersImage {
+  max-width: 100%;
+  height: auto;
+}
+/*---------------------------------------
+  End of Partners Section
+---------------------------------------*/
+
+/*---------------------------------------
+  Custom Market Section
+---------------------------------------*/
+.customMarketSection {
+  padding: 60px 0;
+  background-color: #ffffff;
+}
+
+.marketContent {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  align-items: center;
+}
+
+.marketTextContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.marketSubtitle {
+  color: var(--color-pink);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  text-align: center;
+}
+
+.marketTitle {
+  color: var(--color-grey);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  font-weight: var(--font-bold);
+  text-align: center;
+}
+
+.marketDescription {
+  color: var(--color-grey);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  width: 100%;
+}
+
+.marketParagraph {
+  margin-bottom: 25px; /* More space between paragraphs */
+}
+
+.marketImageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.marketImage {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 992px) {
+  .partnersContent {
+    flex-direction: column-reverse;
+    text-align: left;
+  }
+
+  .partnersTextContainer {
+    width: 100%;
+  }
+
+  .partnersImageContainer {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+/* Reset any conflicting z-index or visibility styles for HomePage elements */
+.homePageContainer {
+  position: relative;
+  z-index: 1; /* Set a baseline low z-index for all HomePage content */
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.statsGrid {
+  display: grid;
+}
+
+/* Ensure the navBar takes precedence on HomePage */
+:global(.navBar) {
+  position: relative;
+  z-index: 10000; /* Higher than any content on HomePage */
+}
+
+/* Ensure the mobile navigation works correctly */
+:global(.mobileNav),
+:global(.mobileNavItem),
+:global(.mobileSubMenu),
+:global(.mobileNavLink),
+:global(.mobileNestedMenu) {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* Ensure all boxes stay within bounds */
+.ctaBox {
+  max-width: calc(100% - 40px);
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 576px) {
+  /* Ensure main sections don't overflow */
+  .rankingSection,
+  .customMarketSection,
+  .featureSection,
+  .problemSolutionContainer,
+  .statsSection,
+  .ctaBox {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .ctaBox {
+    max-width: calc(100% - 20px);
+    line-height: 1.6;
+  }
+  .customPartnersSection {
+    padding: 10px 0;
+  }
+  .featureSectionHeader {
+    padding: 0 20px;
+    margin-bottom: 40px;
+    line-height: 2.6;
+  }
+  .featureTitle {
+    line-height: 1.6;
+  }
+}
+
+/*---------------------------------------
+  Share Section
+---------------------------------------*/
+.shareSection {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.shareContent {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.shareTitle {
+  color: var(--color-charcoal);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.shareDescription {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for share section */
+@media (max-width: 768px) {
+  .shareSection {
+    padding: 40px 0;
+  }
+  
+  .shareTitle {
+    font-size: 1.5rem;
+  }
+  
+  .shareDescription {
+    font-size: 1rem;
+  }
+}

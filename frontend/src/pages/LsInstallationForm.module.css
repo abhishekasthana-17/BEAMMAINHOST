@@ -1,0 +1,303 @@
+/* Styles for LsInstallationForm */
+
+.bgTeal {
+  background-color: var(--color-teal);
+}
+
+.formContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.installationForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: left; 
+}
+
+.installationForm h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.formSection {
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.formSection:last-of-type {
+  border-bottom: none;
+  margin-bottom: 30px;
+}
+
+.formSection h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--color-primary-light);
+  padding-bottom: 10px;
+  display: inline-block; /* Keep border under text */
+}
+
+.sectionDescription {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Spacing between rows */
+}
+
+.formGroup label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+  display: block; /* Ensure label takes full width */
+}
+
+.requiredStar {
+  color: #e74c3c; 
+  margin-left: 4px;
+}
+
+.gridFields,
+.gridFieldsTriple {
+  display: grid;
+  gap: 25px; /* Spacing between columns */
+  align-items: start;
+}
+
+.gridFields {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Responsive 2 columns */
+}
+
+.gridFieldsTriple {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive 3 columns */
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="tel"],
+.formGroup input[type="url"],
+.formGroup input[type="number"],
+.formGroup textarea,
+.formGroup select {
+  padding: 12px 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%; /* Make inputs fill the grid column */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  text-align: left; /* Keep input text left-aligned */
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.2); /* Teal focus ring */
+  outline: none;
+}
+
+.phoneInputGroup {
+  display: flex;
+}
+
+.countryCode {
+  padding: 12px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #dcdcdc;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+  color: #555;
+  white-space: nowrap;
+}
+
+.phoneInputGroup input[type="tel"] {
+  border-radius: 0 4px 4px 0;
+  flex-grow: 1;
+}
+
+.formGroup textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px;
+}
+
+.checkboxGroup {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: left; /* Align checkbox section content left */
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start; /* Align items to the start for multiline labels */
+  gap: 12px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-top: 4px; /* Align checkbox with first line of text */
+  cursor: pointer;
+  width: auto; /* Override width: 100% */
+  accent-color: var(--color-primary); /* Style checkbox color */
+}
+
+.checkbox label {
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0; /* Override default margin */
+  text-align: left; /* Ensure label text is left-aligned */
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.formActions {
+  display: flex;
+  justify-content: center; /* Center submit button */
+  margin-top: 20px;
+}
+
+.submitButton {
+  background-color: var(--color-teal);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submitButton:hover {
+  background-color: var(--color-charcoal); /* Darker teal */
+  transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error Styling */
+.errorInput {
+  border-color: #e74c3c !important; /* Red border for errors */
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.errorText {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 6px;
+  text-align: left; /* Keep error text left-aligned */
+  display: block;
+}
+
+/* Specific style for checkbox error message alignment */
+.errorTextCheckbox {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 6px;
+  text-align: left;
+  padding-left: 28px; /* Align with checkbox label text */
+  display: block;
+}
+
+.errorMessage {
+  background-color: #fdecea;
+  border: 1px solid #e74c3c;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 25px;
+  color: #c0392b;
+  text-align: center;
+}
+
+/* Success Message Styling */
+.successMessage {
+  background-color: #e8f8f5;
+  border: 1px solid #1abc9c;
+  border-radius: 4px;
+  padding: 40px;
+  margin: 40px auto;
+  text-align: center;
+  max-width: 600px;
+}
+
+.successMessage h3 {
+  color: #16a085;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.successMessage p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .installationForm {
+    padding: 30px 20px;
+    text-align: left; /* Switch to left align on smaller screens */
+  }
+
+  .installationForm h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  .formSection h2 {
+    font-size: 20px;
+  }
+
+  .gridFields,
+  .gridFieldsTriple {
+    grid-template-columns: 1fr; /* Stack fields vertically */
+  }
+
+  .formGroup label {
+    text-align: left;
+  }
+
+  .formActions {
+    justify-content: center;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 15px;
+  }
+}

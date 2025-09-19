@@ -1,0 +1,111 @@
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 40px 10px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  margin-bottom: 60px;
+}
+
+.sectionTitle h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  margin-bottom: 10px;
+}
+
+.section h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.section p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.skillList {
+  line-height: 2;
+  font-size: 1rem;
+}
+
+.apply {
+  margin: 40px 0;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.apply a {
+  color: var(--color-pink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.apply a:hover {
+  text-decoration: underline;
+}
+
+.jobDetails {
+  margin-top: 40px;
+  line-height: 2;
+  font-size: 1.1rem;
+}
+
+.applyNowBtn {
+  background: #ff2069;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .section {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  .section h2 {
+    font-size: 1.3rem;
+  }
+
+  .section h3 {
+    font-size: 1.2rem;
+  }
+
+  .apply {
+    font-size: 1.1rem;
+  }
+
+  .jobDetails {
+    font-size: 1rem;
+  }
+
+  .section p,
+  .skillList {
+    font-size: 0.95rem;
+  }
+}

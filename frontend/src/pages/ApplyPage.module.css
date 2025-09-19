@@ -1,0 +1,178 @@
+/* Styles for ApplyPage */
+
+.pinkBackground {
+  background-color: var(--color-pink);
+}
+
+.formContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 20px 80px;
+}
+
+.applicationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.formGroup label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: var(--color-pink);
+  outline: none;
+}
+
+.fileInput {
+  border: 1px dashed #ccc;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.fileInput:hover {
+  background-color: #f0f0f0;
+}
+
+.selectInput {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.checkbox label {
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.link {
+  color: var(--color-pink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.submitButton {
+  background-color: var(--color-pink);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.errorInput {
+  border-color: #e74c3c !important;
+}
+
+.errorText {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.errorMessage {
+  background-color: #fdecea;
+  border-left: 4px solid #e74c3c;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #e74c3c;
+}
+
+.successMessage {
+  background-color: #edfbf6;
+  border-left: 4px solid #2ecc71;
+  padding: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.successMessage h3 {
+  color: #2ecc71;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.successMessage p {
+  color: #333;
+  font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 20px 15px 40px;
+  }
+
+  .applicationForm {
+    padding: 20px;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}
