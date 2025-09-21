@@ -421,22 +421,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* --- Share Section --- */}
-      <div className={styles.shareSection}>
-        <div className={styles.shareContent}>
-          <h3 className={styles.shareTitle}>Share Beam Wallet</h3>
-          <p className={styles.shareDescription}>
-            Help others discover the future of digital payments
-          </p>
-          <SocialShare
-            url="/"
-            title="Beam Wallet - Pay Faster and Earn More"
-            description="Revolutionary digital wallet platform with blockchain technology, smart contracts, and secure payments. Join the future of digital transactions."
-            platforms={['linkedin', 'twitter', 'whatsapp', 'facebook', 'telegram', 'email']}
-            size="large"
-          />
-        </div>
-      </div>
+     
     </div>
   );
 };

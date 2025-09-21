@@ -8,7 +8,6 @@ import logoBeam from "../../assets/images/logo_beam_footer.png";
 import appStore from "../../assets/icons/logo_app_store_footer.png";
 import googlePlay from "../../assets/icons/logo_google_play_footer.png";
 import { Link } from "react-router-dom";
-import seal65 from "../../assets/images/seal_65.png";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -217,20 +216,6 @@ const Footer = () => {
               <p>Copyright ©{new Date().getFullYear()} | All rights reserved</p>
             </div>
 
-            <div className={styles.certifications}>
-              <a
-                href="https://my-pci.usd.de/compliance/2909-2A2C-E055-8FEA-A952-A7AC/details_en.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.certLink}
-              >
-                <img
-                  src={seal65}
-                  alt="International Certified Domain"
-                  className={styles.certBadge}
-                />
-              </a>
-            </div>
           </div>
         </div>
       </div>

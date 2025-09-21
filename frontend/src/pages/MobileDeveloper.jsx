@@ -17,13 +17,13 @@ const MobileDeveloper = () => {
           <div className={styles.sectionTitle}>
             <h2>PURPOSE</h2>
             <p>
-              The central purpose of the Mobile Developer role is to develop and implement high quality software as part of your product team. You will also contribute to architecture and design discussions and contribute to growth and learning within the Beam Engineering team.
+              Join the platform that is transforming the global digital economy.Beam Wallet, a leader in smart payments and mobile-first business solutions, is hiring a versatile and experienced Mobile Developer to help build and maintain powerful Android and iOS applications.
             </p>
           </div>
         </div>
 
         <div className={styles.section}>
-          <h2>TECHNICAL SKILLS REQUIRED</h2>
+          <h2>What we’re looking for:</h2>
           <h3>Essential:</h3>
           <p className={styles.skillList}>
             Experience working with Swift/RxSwift
@@ -77,7 +77,7 @@ const MobileDeveloper = () => {
           <p className={styles.jobDetails}>
             <strong>Job Type:</strong> Full Time
             <br />
-            <strong>Job Location:</strong> Cascais
+            <strong>Job Location:</strong> Worldwide — work from anywhere.
             <br />
             <strong>Department:</strong> Engineering
           </p>

@@ -4,6 +4,12 @@ import styles from "./Footer.module.css";
 import logoBeam from "../../assets/images/logo_beam_footer.png";
 import appStore from "../../assets/icons/logo_app_store_footer.png";
 import googlePlay from "../../assets/icons/logo_google_play_footer.png";
+import partnerhotels from "../../assets/images/logo_partnerhotel.png";
+import sage from "../../assets/images/logo_sage.png";
+import competir from "../../assets/images/logo_competir.png";
+import sabersaude from "../../assets/images/logo_sabersaude.png";
+import dmcaImage from "../../assets/images/dmca.png";
+import seal65Image from "../../assets/images/seal_65.png";
 import { getFooter } from "../../utils/strapiService";
 
 const STRAPI_URL =
@@ -51,11 +57,11 @@ const StrapiFooter = () => {
 
   if (loading) {
     return (
-      <footer className={styles.footer}>
+      <div className={styles.footer}>
         <div className={styles.container}>
           <p>Loading footer...</p>
         </div>
-      </footer>
+      </div>
     );
   }
 
@@ -78,6 +84,11 @@ const StrapiFooter = () => {
       imageField[0].url
     ) {
       const url = imageField[0].url;
+      return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
+    }
+    // Handle data structure where image might be nested in 'data' property
+    if (imageField && imageField.data && imageField.data.attributes && imageField.data.attributes.url) {
+      const url = imageField.data.attributes.url;
       return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
     }
     return null; // Return null if no valid image URL is found
@@ -109,15 +120,45 @@ const StrapiFooter = () => {
         {/* Partners Section */}
         <div className={styles.partners}>
           {currentData.Partner && currentData.Partner.length > 0 ? (
-            currentData.Partner.map((partner, index) => (
-              <img
-                key={index}
-                src={getImageUrl(partner.image)}
-                alt={partner.altText || partner.name || `Partner ${index + 1}`}
-              />
-            ))
+            currentData.Partner.map((partner, index) => {
+              // Fallback to static images if Strapi images aren't loading
+              let imageUrl = getImageUrl(partner.image);
+              
+              // Fallback images based on partner name or index
+              if (!imageUrl) {
+                const partnerName = partner.name || '';
+                if (partnerName.includes('Partner') && partnerName.includes('Hotel')) {
+                  imageUrl = partnerhotels;
+                } else if (partnerName.includes('Sage')) {
+                  imageUrl = sage;
+                } else if (partnerName.includes('Competir')) {
+                  imageUrl = competir;
+                } else if (partnerName.includes('Saber')) {
+                  imageUrl = sabersaude;
+                }
+              }
+              
+              return (
+                <img
+                  key={index}
+                  src={imageUrl}
+                  alt={partner.altText || partner.name || `Partner ${index + 1}`}
+                  onError={(e) => {
+                    console.error('Image failed to load:', e.target.src);
+                    // Try to load from static assets as fallback
+                    if (partner.name === 'Sage') e.target.src = logoBeam; // Just as an example fallback
+                  }}
+                />
+              );
+            })
           ) : (
-            <></>
+            // Fallback to static partner images if no Strapi data
+            <>
+              <img src={new URL('../../assets/images/logo_sage.png', import.meta.url).href} alt="Sage" />
+              <img src={new URL('../../assets/images/logo_competir.png', import.meta.url).href} alt="Competir" />
+              <img src={new URL('../../assets/images/logo_partnerhotel.png', import.meta.url).href} alt="Partner Hotels" />
+              <img src={new URL('../../assets/images/logo_sabersaude.png', import.meta.url).href} alt="Saber Saude" />
+            </>
           )}
         </div>
         <hr className={styles.hr} />
@@ -344,25 +385,17 @@ const StrapiFooter = () => {
               <p>{currentData.legalText}</p>
             </div>
 
-            {/* Certifications */}
+            {/* Certifications - Always show DMCA and Seal 65 */}
             <div className={styles.certifications}>
-              {currentData.certifications &&
-                currentData.certifications.length > 0 &&
-                currentData.certifications.map((cert, index) => (
-                  <a
-                    key={index}
-                    href={cert.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.certLink}
-                  >
-                    <img
-                      src={getImageUrl(cert.image)}
-                      alt={cert.altText || `Certification ${index + 1}`}
-                      className={styles.certBadge}
-                    />
-                  </a>
-                ))}
+              {/* Always display DMCA and Seal 65 certifications */}
+              <a href="https://www.dmca.com/Protection/Status.aspx?id=fc54b3fe-07dd-49a0-9252-696567770cd1&refurl=https%3a%2f%2fbeamwallet.com%2f&rlo=true" target="_blank" rel="noopener noreferrer" className={styles.certLink}>
+                <img src={dmcaImage} alt="DMCA Protected" className={styles.certBadge} />
+              </a>
+              <a href="https://my-pci.usd.de/compliance/2909-2A2C-E055-8FEA-A952-A7AC/details_en.html" target="_blank" rel="noopener noreferrer" className={styles.certLink}>
+                <img src={seal65Image} alt="Seal 65" className={styles.certBadge} />
+              </a>
+              
+              
             </div>
           </div>
         </div>

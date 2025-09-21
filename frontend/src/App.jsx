@@ -30,6 +30,14 @@ import {
   DiscoverFuture,
   GraphicDesigner,
   SeoSpecialist,
+  FullStackWeb3Developer,
+  Designer,
+  SecurityDeveloper,
+  SocialMediaSpecialist,
+  InternationalProjectManager,
+  Tester,
+  CybersecurityDeveloper,
+  SalesAgent,
   LpForm,
   CareerApplicationPage,
 } from "./pages";
@@ -101,6 +109,38 @@ function App() {
               element={<GraphicDesigner />}
             />
             <Route path="careers/seo-specialist" element={<SeoSpecialist />} />
+            <Route
+              path="careers/fullstack-web3-developer"
+              element={<FullStackWeb3Developer />}
+            />
+            <Route
+              path="careers/designer"
+              element={<Designer />}
+            />
+            <Route
+              path="careers/security-developer"
+              element={<SecurityDeveloper />}
+            />
+            <Route
+              path="careers/social-media-specialist"
+              element={<SocialMediaSpecialist />}
+            />
+            <Route
+              path="careers/international-project-manager"
+              element={<InternationalProjectManager />}
+            />
+            <Route
+              path="careers/tester"
+              element={<Tester />}
+            />
+            <Route
+              path="careers/cybersecurity-developer"
+              element={<CybersecurityDeveloper />}
+            />
+            <Route
+              path="careers/sales-agent"
+              element={<SalesAgent />}
+            />
             {/* Dynamic CMS pages */}
             <Route path="cms/:contentType/:slug" element={<StrapiPage />} />
             {/* Test route for debugging */}

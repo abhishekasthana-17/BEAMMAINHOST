@@ -69,6 +69,8 @@
 .partners img {
   width: 170px;
   height: 60px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ----- Main Content Section ----- */
