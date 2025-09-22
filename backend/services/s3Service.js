@@ -1,13 +1,11 @@
-const AWS = require('aws-sdk');
+const { S3Client, GetObjectCommand, PutObjectCommand } = require('@aws-sdk/client-s3');
 const config = require('../config');
 
-// Configure the AWS SDK
+// Configure the AWS SDK v3 client
 // When running on EC2 with an IAM role, the SDK automatically finds credentials.
-AWS.config.update({
+const s3 = new S3Client({
   region: config.aws.s3Region,
 });
-
-const s3 = new AWS.S3();
 
 const logConsentToS3 = async (consentData) => {
   const bucketName = config.aws.s3BucketName;
@@ -17,11 +15,12 @@ const logConsentToS3 = async (consentData) => {
 
   try {
     // Attempt to get the existing log file from S3
-    const data = await s3.getObject({
+    const data = await s3.send(new GetObjectCommand({
       Bucket: bucketName,
       Key: logFileName,
-    }).promise();
-    logs = JSON.parse(data.Body.toString('utf-8'));
+    }));
+    const bodyString = await data.Body.transformToString();
+    logs = JSON.parse(bodyString);
   } catch (error) {
     if (error.code === 'NoSuchKey') {
       // If the file doesn't exist, we'll start with an empty array
@@ -38,12 +37,12 @@ const logConsentToS3 = async (consentData) => {
 
   // Upload the updated log file back to S3
   try {
-    await s3.putObject({
+    await s3.send(new PutObjectCommand({
       Bucket: bucketName,
       Key: logFileName,
       Body: JSON.stringify(logs, null, 2),
       ContentType: 'application/json',
-    }).promise();
+    }));
     console.log('Successfully logged consent to S3.');
   } catch (error) {
     console.error('Error uploading log file to S3:', error);
@@ -53,4 +52,4 @@ const logConsentToS3 = async (consentData) => {
 
 module.exports = {
   logConsentToS3,
-}; 
+};
