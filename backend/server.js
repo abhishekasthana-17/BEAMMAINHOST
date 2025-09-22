@@ -25,7 +25,9 @@ const allowedOrigins = [
   'https://beamwallet.com', // Non-www version
   'https://sitebackend.beamwallet.com', // Add your backend domain if it needs to make requests to itself, or for WebSocket origins etc.
   'http://localhost:5173', // For local frontend development
-  'https://www.datagen.site' // Your production frontend
+  'https://www.datagen.site',
+  'https://beam-source-code-9.vercel.app'
+   // Your production frontend
 ];
 
 app.use(cors({
