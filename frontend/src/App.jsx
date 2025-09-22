@@ -46,6 +46,7 @@ import ChatBot from "./components/ChatBot/ChatBot";
 import ScrollToTop from "./components/ScrollToTop";
 import StrapiPage from "./components/StrapiPage";
 import StrapiAboutPage from "./components/StrapiAboutPage";
+import NewsletterPopup from "./components/NewsletterPopup/NewsletterPopup";
 
 function App() {
   return (
@@ -157,6 +158,7 @@ function App() {
         </Routes>
       </Router>
       <ChatBot />
+      <NewsletterPopup />
     </>
   );
 }

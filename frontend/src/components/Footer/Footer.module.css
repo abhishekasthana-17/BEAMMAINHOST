@@ -235,19 +235,25 @@
 }
 
 /* ----- Responsive Design ----- */
-@media (max-width: 1200px) {
+@media (max-width: 1199.98px) {
   .footerContainer {
-    max-width: 1200px;
+    max-width: 960px;
   }
 
   .partners {
     gap: 4rem;
   }
+  
+  .partners img {
+    width: 160px;
+    height: 55px;
+  }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991.98px) {
   .footerContainer {
-    max-width: 960px;
+    max-width: 720px;
+    padding: 0 1.5rem;
   }
 
   .partners {
@@ -260,27 +266,48 @@
   }
 
   .certBadge {
-    height: 70px;
+    height: 65px;
+  }
+  
+  .newsletterTitle {
+    font-size: 1.8rem;
+  }
+  
+  .columnTitle {
+    font-size: 1.5rem;
   }
 }
 
 /* ----- Tablet Responsive ----- */
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
+  .container {
+    padding: 0 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .newsletterTitle {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+  
   .newsletterForm {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
   }
 
   .emailInput,
   .subscribeButton {
     width: 100%;
     max-width: 100%;
+    padding: 1rem;
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 
   .partners {
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    margin-bottom: 3rem;
   }
 
   .partners img {
@@ -290,7 +317,7 @@
 
   .footerContainer {
     flex-direction: column;
-    max-width: 720px;
+    max-width: 100%;
     padding: 0 1rem;
   }
 
@@ -298,16 +325,26 @@
     width: 100%;
     min-width: 100%;
     padding: 0;
+    margin-bottom: 2.5rem;
+  }
+  
+  .footerColumn:first-child {
+    max-width: 100%;
   }
 
   .description {
     max-width: 100%;
+  }
+  
+  .description p {
+    font-size: 1.1rem;
   }
 
   .downloadButtons {
     flex-direction: row;
     justify-content: flex-start;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .downloadButton {
@@ -316,28 +353,54 @@
 
   .certifications {
     flex-wrap: wrap;
+    gap: 1.2rem;
   }
 
   .certBadge {
     height: 60px;
   }
+  
+  .socialIcons {
+    gap: 1.2rem;
+  }
+  
+  .legalText {
+    font-size: 0.95rem;
+  }
 }
 
 /* ----- Mobile Responsive ----- */
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 0.8rem;
     margin-bottom: 2rem;
   }
 
   .newsletterTitle {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .newsletterForm {
+    gap: 0.6rem;
+  }
+  
+  .emailInput,
+  .subscribeButton {
+    padding: 0.9rem;
+    font-size: 16px;
   }
 
   .partners {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .partners img {
+    width: 110px;
+    height: 35px;
   }
 
   .footerLogo {
@@ -345,11 +408,18 @@
   }
 
   .columnTitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footerLinks a {
+    font-size: 1rem;
   }
 
   .downloadButtons {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
   }
 
   .downloadButton {
@@ -359,13 +429,27 @@
   .socialIcons {
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .socialIcon {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .certBadge {
     height: 50px;
+  }
+  
+  .certifications {
+    gap: 1rem;
+  }
+  
+  .legalText {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .bottomFooter {
+    padding: 1.5rem 0;
   }
 }

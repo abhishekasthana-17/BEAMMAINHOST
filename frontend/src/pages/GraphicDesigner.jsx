@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
-import styles from "./GraphicDesigner.module.css";
+import styles from "./MobileDeveloper.module.css";
 
 const GraphicDesigner = () => {
   // Set page title when component mounts
@@ -86,14 +86,7 @@ const GraphicDesigner = () => {
         </div>
 
         <div className={styles.section}>
-          <p>
-            If you're ready to revolutionize design in the digital transaction
-            space, send your portfolio and resume to{" "}
-            <a className={styles.applyNowBtn} href={`/careers/apply?position=${encodeURIComponent('Graphic Designer')}`} target="_blank" rel="noopener noreferrer">Apply Now</a>
-          </p>
-          <p className={styles.apply}>
-            Join us and use your talent to create the future!
-          </p>
+          <a className={styles.applyNowBtn} href={`/careers/apply?position=${encodeURIComponent('Graphic Designer')}`} target="_blank" rel="noopener noreferrer">Apply Now</a>
         </div>
 
         <div className={styles.section}>

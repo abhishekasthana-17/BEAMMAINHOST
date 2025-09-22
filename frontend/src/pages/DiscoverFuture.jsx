@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Hero from "../components/Hero/Hero";
-import styles from "./DiscoverFuture.module.css";
+import styles from "./MobileDeveloper.module.css";
 import { countries } from "../utils/countries";
 
 const API_URL = import.meta.env.VITE_API_URL;

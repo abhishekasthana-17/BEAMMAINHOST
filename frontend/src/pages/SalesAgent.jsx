@@ -1,127 +1,127 @@
-import React, { useEffect } from "react";
-import styles from "./MobileDeveloper.module.css";
-import Hero from "../components/Hero/Hero";
-import Section from "../components/Section/Section";
+import React, { useEffect } from 'react';
+import Hero from '../components/Hero/Hero';
+import styles from './MobileDeveloper.module.css';
 
 const SalesAgent = () => {
-  // Set page title when component mounts
   useEffect(() => {
-    document.title = "Sales Agent - Beam Wallet Careers";
+    document.title = 'Sales Agent - Beam Wallet';
   }, []);
 
   return (
-    <div>
-      <Hero title="Sales Agent" backgroundColor={styles.pinkBackground} />
-      
-      <Section
-        subtitle="JOIN OUR GLOBAL TEAM"
-        title="Sales Agent - Beam Wallet"
-        description="Are you ready to represent one of the smartest and most complete payment platforms in the world?"
-        className={styles.jobDetailsSection}
-        backgroundColor="white"
-      />
+    <>
+      <Hero category="Careers" title="Sales Agent" />
 
-      <div className={styles.jobContent}>
-        <div className={styles.jobDescription}>
-          <p className={styles.introText}>
-            Beam Wallet is hiring high-level sales professionals in any country, with the goal of expanding its 
-            global presence and offering real opportunities for those who want to grow with results.
-          </p>
-
-          <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>About Beam Wallet</h3>
+      <div className={styles.container}>
+        <div className={styles.section}>
+          <div className={styles.sectionTitle}>
+            <h2>About the Role</h2>
             <p>
-              Beam Wallet is not just an app — it's a technological platform that transforms the way businesses 
-              interact with their customers. Through digital payments with real cashback, intelligent loyalty, 
-              integrated marketing, complete CRM, and cutting-edge security, we help businesses of all sizes sell 
-              more, every single day.
+              Join Beam Wallet as a Sales Agent and be part of our dynamic sales team driving growth 
+              in the digital payment industry. We're looking for motivated individuals who are passionate 
+              about fintech solutions and have a proven track record in sales.
             </p>
-            <p>
-              Beam is already present in dozens of countries, with thousands of active users and merchants. And 
-              now we're opening new positions for commercial agents around the world.
-            </p>
-          </div>
-
-          <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>What You'll Do</h3>
-            <ul className={styles.bulletList}>
-              <li>Present Beam Wallet to local businesses, physical or online</li>
-              <li>Close new contracts and support commercial activations</li>
-              <li>Work independently, with full support from our team</li>
-              <li>Build and manage your own portfolio of clients and partners</li>
-              <li>Participate in local and international Beam Wallet campaigns</li>
-              <li>Represent the platform with excellence and a results-driven mindset</li>
-            </ul>
-          </div>
-
-          <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>What We're Looking For</h3>
-            <ul className={styles.bulletList}>
-              <li>Motivated, organized individuals who are eager to grow</li>
-              <li>Experience in sales or commercial representation (preferred but not required)</li>
-              <li>Entrepreneurial spirit and ability to work autonomously</li>
-              <li>Excellent communication skills in any language</li>
-              <li>Availability to work remotely or on-site, depending on your local market</li>
-            </ul>
-          </div>
-
-          <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>What We Offer</h3>
-            <ul className={styles.bulletList}>
-              <li>A real earning model: with work, dedication, and strategy, our agents can earn €15,000 or more per month</li>
-              <li>Complete and ongoing training</li>
-              <li>International support and access to our infrastructure</li>
-              <li>Regional CRM to manage your operations and clients</li>
-              <li>Commissions per installation and recurring monthly revenue</li>
-              <li>Opportunities to lead growing teams</li>
-              <li>Training trips and exchanges with other countries (fully paid by Beam)</li>
-              <li>Long-term professional growth within the company</li>
-            </ul>
-          </div>
-
-          <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>How to Apply</h3>
-            <p>
-              Go to <strong>agents.beamwallet.com</strong> and fill out the application form with your details. Once you complete 
-              this step and advance with the commercial plan, you become a lifetime member of Beam Wallet — 
-              with full access to our infrastructure, ongoing training, exclusive technology, and international 
-              expansion opportunities.
-            </p>
-            <p>
-              This step is very important, because at Beam Wallet we pay well to those who work well. So whoever 
-              joins must commit, with the right mindset and confidence — and without fear, because we are here 
-              to support you in everything.
-            </p>
-            <p>
-              This is the right moment to change your professional life. If you're looking for independence, 
-              above-average income, and a global support network, Beam Wallet is ready to welcome you. Join us 
-              with enthusiasm — because here, those who take the first step never walk alone.
-            </p>
-          </div>
-
-          <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>Important Note for Candidates</h3>
-            <p>
-              Before applying, take a few minutes to understand what Beam Wallet is all about. All information is 
-              available on <strong>beamwallet.com</strong> and on our social media channels. Knowing what you're joining is 
-              essential — because time is money, and both you and Beam Wallet deserve a productive and 
-              transparent process.
-            </p>
-          </div>
-
-          <div className={styles.applySection}>
-            <a 
-              href="https://agents.beamwallet.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.applyButton}
-            >
-              Apply Now at agents.beamwallet.com
-            </a>
           </div>
         </div>
+
+        <div className={styles.section}>
+          <h2>Key Responsibilities</h2>
+          <p className={styles.skillList}>
+            Generate new business opportunities through prospecting and lead qualification
+            <br />
+            Build and maintain relationships with potential and existing clients
+            <br />
+            Present Beam Wallet's products and services to prospective customers
+            <br />
+            Negotiate contracts and close deals to meet sales targets
+            <br />
+            Collaborate with marketing team to develop sales strategies
+            <br />
+            Maintain accurate records of sales activities in CRM system
+            <br />
+            Provide excellent customer service and support throughout the sales process
+            <br />
+            Stay updated on industry trends and competitive landscape
+            <br />
+            Participate in trade shows, conferences, and networking events
+          </p>
+        </div>
+
+        <div className={styles.section}>
+          <h2>Required Qualifications</h2>
+          <p className={styles.skillList}>
+            Bachelor's degree in Business, Marketing, or related field
+            <br />
+            Minimum 2 years of experience in B2B sales or business development
+            <br />
+            Proven track record of meeting or exceeding sales targets
+            <br />
+            Excellent communication and presentation skills
+            <br />
+            Strong negotiation and closing abilities
+            <br />
+            Experience with CRM software and sales tools
+            <br />
+            Self-motivated with strong organizational skills
+            <br />
+            Ability to work independently and as part of a team
+            <br />
+            Professional appearance and demeanor
+          </p>
+        </div>
+
+        <div className={styles.section}>
+          <h2>Preferred Skills</h2>
+          <p className={styles.skillList}>
+            Experience in fintech, payments, or financial services industry
+            <br />
+            Knowledge of digital payment solutions and blockchain technology
+            <br />
+            Experience with enterprise sales and complex sales cycles
+            <br />
+            Multilingual capabilities for international markets
+            <br />
+            Experience with Salesforce or similar CRM platforms
+            <br />
+            Network of contacts in the financial services industry
+            <br />
+            Previous experience in startup or high-growth environments
+          </p>
+        </div>
+
+        <div className={styles.section}>
+          <h2>What We Offer</h2>
+          <p className={styles.skillList}>
+            Competitive base salary plus commission structure
+            <br />
+            Comprehensive benefits package including health insurance
+            <br />
+            Professional development and training opportunities
+            <br />
+            Opportunity to work with cutting-edge fintech solutions
+            <br />
+            Flexible work arrangements and remote work options
+            <br />
+            Career advancement opportunities in a growing company
+            <br />
+            Performance bonuses and incentive programs
+          </p>
+        </div>
+
+        <div className={styles.section}>
+          <a className={styles.applyNowBtn} href={`/careers/apply?position=${encodeURIComponent('Sales Agent')}`} target="_blank" rel="noopener noreferrer">Apply Now</a>
+        </div>
+
+        <div className={styles.section}>
+          <p className={styles.jobDetails}>
+            <strong>Job Type:</strong> Full Time
+            <br />
+            <strong>Job Location:</strong> Remote/Hybrid
+            <br />
+            <strong>Department:</strong> Sales
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

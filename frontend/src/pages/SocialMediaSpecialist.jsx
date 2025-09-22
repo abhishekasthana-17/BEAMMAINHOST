@@ -81,32 +81,18 @@ const SocialMediaSpecialist = () => {
             </ul>
           </div>
 
-          <div className={styles.importantNote}>
-            <h3>⚠️ Important Note for Applicants</h3>
-            <p>
-              At Beam Wallet, we believe that time is money. Before applying, it is essential that candidates fully 
-              understand what Beam Wallet is and how it operates. All information is available at 
-              <a href="https://www.beamwallet.com" target="_blank" rel="noopener noreferrer"> beamwallet.com </a>
-              and on our official social media channels.
-            </p>
-            <p>
-              It is crucial to know where you are applying, as we do not want candidates or Beam Wallet to lose time 
-              if there is no minimum knowledge about the platform.
-            </p>
+          <div className={styles.jobSection}>
+            <a className={styles.applyNowBtn} href={`/careers/apply?position=${encodeURIComponent('Social Media Specialist')}`} target="_blank" rel="noopener noreferrer">Apply Now</a>
           </div>
 
-          <div className={styles.applicationSection}>
-            <h3>How to Apply</h3>
-            <p>
-              Ready to shape the social media presence of a global fintech platform? Apply now and join our 
-              international team creating engaging digital experiences worldwide.
+          <div className={styles.jobSection}>
+            <p className={styles.jobDetails}>
+              <strong>Job Type:</strong> Full Time
+              <br />
+              <strong>Job Location:</strong> Remote
+              <br />
+              <strong>Department:</strong> Marketing
             </p>
-            <p>
-              Your CV and portfolio will be reviewed as part of the application process.
-            </p>
-            <button className={styles.applyButton}>
-              Apply Now
-            </button>
           </div>
         </div>
       </Section>

@@ -412,7 +412,7 @@
 
 /* ----- Media Queries ----- */
 
-@media (max-width: 992px) {
+@media (max-width: 991.98px) {
   /* Hide desktop nav, show mobile button */
   .nav,
   .appButtons {
@@ -420,7 +420,6 @@
   }
   .mobileMenuButton {
     display: flex; /* Show the mobile button */
-    /* Keep existing styles for the button itself */
   }
   /* Ensure mobileNav starts hidden */
   .mobileNav {
@@ -431,7 +430,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767.98px) {
   .navBarContainer {
     padding: 0.75rem 1rem; /* Adjust padding for smaller screens */
   }
@@ -453,4 +452,59 @@
   .mobileNav {
     width: 90%; /* Wider on very small screens */
   }
+}
+
+@media (max-width: 575.98px) {
+  .navBarContainer {
+    padding: 0.5rem 0.75rem; /* Even tighter padding for very small screens */
+  }
+  .logo img {
+    height: 35px; /* Even smaller logo for very small screens */
+  }
+  .mobileNav {
+    width: 95%; /* Almost full width on very small screens */
+    max-width: none; /* Remove max-width constraint */
+  }
+  .mobileNavLink {
+    padding: 0.8rem 0.75rem; /* Tighter padding */
+    font-size: 0.9rem;
+  }
+  .mobileSubLink {
+    padding: 0.6rem 0.75rem 0.6rem 1.5rem; /* Reduced indent */
+    font-size: 0.8rem;
+  }
+  .mobileNestedLink {
+    padding: 0.5rem 0.75rem 0.5rem 2.25rem; /* Reduced indent */
+    font-size: 0.75rem;
+  }
+}
+
+/* Improved mobile menu accessibility */
+@media (max-width: 991.98px) {
+  .mobileMenuButton {
+    min-width: 44px; /* Minimum touch target size */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobileNavLink,
+  .mobileSubLink,
+  .mobileNestedLink {
+    min-height: 44px; /* Minimum touch target size */
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Enhanced mobile navigation performance */
+.mobileNav {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.mobileNavOverlay {
+  will-change: opacity;
+  backface-visibility: hidden;
 }

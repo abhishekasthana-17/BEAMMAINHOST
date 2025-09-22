@@ -218,8 +218,143 @@ textarea::placeholder {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
+  .contactPage {
+    padding: 1.5rem;
+  }
+  
+  .heroSection {
+    margin-left: 80px;
+    margin-top: 50px;
+  }
+  
+  .contactHeading {
+    font-size: 1.8rem;
+  }
+  
+  .formContainer {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contactPage {
+    padding: 1rem;
+  }
+  
+  .heroSection {
+    margin-left: 20px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .heroSection h1 {
+    font-size: 1.3rem;
+  }
+  
+  .contactHeading {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  
+  .formContainer {
+    padding: 0 10px;
+  }
+  
   .nameFields {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .radioGroup {
+    gap: 1rem;
+  }
+  
+  .radioOption {
+    padding: 0.5rem 0;
+  }
+  
+  .radioOption input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .radioOption label {
+    font-size: 0.95rem;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 1rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+  }
+  
+  .checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .checkbox label {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .contactPage {
+    padding: 0.5rem;
+  }
+  
+  .heroSection {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  
+  .heroSection h1 {
+    font-size: 1.2rem;
+  }
+  
+  .contactHeading {
+    font-size: 1.4rem;
+  }
+  
+  .formContainer {
+    padding: 0 5px;
+  }
+  
+  .contactForm {
+    gap: 1.2rem;
+  }
+  
+  .formGroup label {
+    font-size: 0.9rem;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 0.8rem;
+    font-size: 16px;
+  }
+  
+  .radioOption label {
+    font-size: 0.9rem;
+  }
+  
+  .submitButton {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+  
+  .checkbox label {
+    font-size: 0.85rem;
   }
 }

@@ -3,7 +3,6 @@ import Hero from "../components/Hero/Hero";
 import styles from "./MobileDeveloper.module.css";
 
 const FullStackWeb3Developer = () => {
-  // Set page title when component mounts
   useEffect(() => {
     document.title = "Full Stack/Web3 Developer - Beam Wallet";
   }, []);
@@ -15,7 +14,7 @@ const FullStackWeb3Developer = () => {
       <div className={styles.container}>
         <div className={styles.section}>
           <div className={styles.sectionTitle}>
-            <h2>PURPOSE</h2>
+            <h2>About the Role</h2>
             <p>
               We are looking for an experienced full stack developer to lead the integration between a token sales portal and an Ethereum smart contract. Join the platform that is transforming the global digital economy. At Beam Wallet, we build what no one else in the world can.
             </p>
@@ -23,7 +22,7 @@ const FullStackWeb3Developer = () => {
         </div>
 
         <div className={styles.section}>
-          <h2>Responsibilities:</h2>
+          <h2>Key Responsibilities</h2>
           <p className={styles.skillList}>
             Implement Web3 integration to interact with the Ethereum smart contract (testnet & mainnet)
             <br />
@@ -36,12 +35,15 @@ const FullStackWeb3Developer = () => {
             Ensure secure, reliable, and efficient interaction with the blockchain
             <br />
             Collaborate with the smart contract and frontend teams to complete the full integration flow
+            <br />
+            Develop and maintain backend services using Firebase
+            <br />
+            Build responsive frontend interfaces for token sale portal
           </p>
         </div>
 
         <div className={styles.section}>
-          <h2>Requirements:</h2>
-          <h3>Essential:</h3>
+          <h2>Required Qualifications</h2>
           <p className={styles.skillList}>
             Strong experience in Firebase backend development
             <br />
@@ -49,50 +51,70 @@ const FullStackWeb3Developer = () => {
             <br />
             Familiarity with Web3 libraries, especially Web3j
             <br />
-            Experience working with Ethereum testnets (Sepolia) and tools like Remix, MetaMask, and Etherscan
+            Experience with smart contract interaction and ABI handling
             <br />
-            Good understanding of Solidity
+            Knowledge of Solidity and smart contract development
             <br />
-            Proven projects with smart contract development or similar integrations
+            Proficiency in JavaScript/TypeScript and modern frameworks
             <br />
-            Ability to handle transaction gas estimation, error handling, and contract method encoding
-          </p>
-
-          <h3>Nice to Have:</h3>
-          <p className={styles.skillList}>
-            Experience writing or working with Solidity smart contracts
+            Experience with wallet integration (MetaMask, WalletConnect)
             <br />
-            Knowledge of token sale mechanisms (private/pre/public sales)
+            Understanding of DeFi protocols and token economics
             <br />
-            Previous experience integrating token sales into real-world portals
-            <br />
-            Experience with blockchain development environments (e.g., Ganache, Hardhat)
+            Strong problem-solving and debugging skills
           </p>
         </div>
 
         <div className={styles.section}>
-          <h2>Work Setup:</h2>
+          <h2>Preferred Skills</h2>
           <p className={styles.skillList}>
-            Remote
+            Experience with React.js and modern frontend frameworks
             <br />
-            Freelance or milestone-based project
+            Knowledge of Chainlink oracles and price feeds
             <br />
-            Start: ASAP
+            Familiarity with testing frameworks for smart contracts
+            <br />
+            Experience with cloud platforms (AWS, Google Cloud)
+            <br />
+            Understanding of security best practices in Web3
+            <br />
+            Experience with CI/CD pipelines and DevOps practices
+            <br />
+            Knowledge of Layer 2 solutions and scaling technologies
           </p>
         </div>
 
         <div className={styles.section}>
-          <h2>How to Apply:</h2>
-          <p>
-            <strong>Important tip for applicants:</strong> Before applying, visit <a href="https://beamwallet.com" target="_blank" rel="noopener noreferrer">Beam Wallet | Pay Faster and Earn More</a>, explore our mission, and understand where you're sending your talent. Time is money – yours and ours.
-          </p>
-          <p>
-            💡 Join the platform that is transforming the global digital economy. At Beam Wallet, we build what no one else in the world can.
+          <h2>What We Offer</h2>
+          <p className={styles.skillList}>
+            Competitive salary and token incentives
+            <br />
+            Opportunity to work on cutting-edge blockchain technology
+            <br />
+            Remote work flexibility with global team collaboration
+            <br />
+            Professional development in the rapidly growing Web3 space
+            <br />
+            Access to latest tools and technologies
+            <br />
+            Career growth opportunities in a innovative fintech company
+            <br />
+            Comprehensive benefits package
           </p>
         </div>
 
-        <div className={styles.applySection}>
+        <div className={styles.section}>
           <a className={styles.applyNowBtn} href={`/careers/apply?position=${encodeURIComponent('Full Stack/Web3 Developer')}`} target="_blank" rel="noopener noreferrer">Apply Now</a>
+        </div>
+
+        <div className={styles.section}>
+          <p className={styles.jobDetails}>
+            <strong>Job Type:</strong> Full Time
+            <br />
+            <strong>Job Location:</strong> Remote
+            <br />
+            <strong>Department:</strong> Engineering
+          </p>
         </div>
       </div>
     </>

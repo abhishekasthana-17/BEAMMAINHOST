@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
-import styles from "./JavaScalaDeveloper.module.css";
+import styles from "./MobileDeveloper.module.css";
 import PageHelmet from "../components/PageHelmet";
 
 const JavaScalaDeveloper = () => {
@@ -89,14 +89,6 @@ const JavaScalaDeveloper = () => {
         </div>
 
         <div className={styles.section}>
-          <h2>How to apply:</h2>
-          <p>
-            If you are excited to be part of our team and ready to take on new
-            challenges, please submit your resume and cover letter demonstrating
-            your Java/Scala programming experience and relevant projects. We
-            look forward to receiving your application and exploring how you can
-            contribute to our continued success.
-          </p>
           <a className={styles.applyNowBtn} href={`/careers/apply?position=${encodeURIComponent('Java/Scala Developer')}`} target="_blank" rel="noopener noreferrer">Apply Now</a>
         </div>
 

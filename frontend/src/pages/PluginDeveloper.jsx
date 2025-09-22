@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
-import styles from "./PluginDeveloper.module.css";
+import styles from "./MobileDeveloper.module.css";
 
 const PluginDeveloper = () => {
   // Set page title when component mounts

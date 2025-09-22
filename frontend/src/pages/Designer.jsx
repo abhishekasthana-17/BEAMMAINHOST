@@ -92,28 +92,17 @@ const Designer = () => {
         </div>
 
         <div className={styles.section}>
-          <h2>⚠️ Important Note for Applicants</h2>
-          <p>
-            At Beam Wallet, we believe that time is money. Before applying, it is essential that candidates fully 
-            understand what Beam Wallet is and how it operates. All information is available at <a href="https://beamwallet.com" target="_blank" rel="noopener noreferrer">beamwallet.com</a> 
-            and on our official social media channels.
-          </p>
-          <p>
-            It is crucial to know where you are applying, as we do not want candidates or Beam Wallet to lose 
-            time if there is no minimum knowledge about the platform.
-          </p>
+          <a className={styles.applyNowBtn} href={`/careers/apply?position=${encodeURIComponent('Designer')}`} target="_blank" rel="noopener noreferrer">Apply Now</a>
         </div>
 
         <div className={styles.section}>
-          <h2>👉 Application:</h2>
-          <p>
-            Only applications sent to our official email <strong>hr@beamwallet.com</strong> with the subject line 
-            <strong>"Application – Designer Beam Wallet"</strong> and including an updated CV and portfolio will be reviewed.
+          <p className={styles.jobDetails}>
+            <strong>Job Type:</strong> Full Time
+            <br />
+            <strong>Job Location:</strong> Remote / International
+            <br />
+            <strong>Department:</strong> Design
           </p>
-        </div>
-
-        <div className={styles.applySection}>
-          <a className={styles.applyNowBtn} href="mailto:hr@beamwallet.com?subject=Application – Designer Beam Wallet" target="_blank" rel="noopener noreferrer">Apply Now</a>
         </div>
       </div>
     </>
