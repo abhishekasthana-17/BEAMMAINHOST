@@ -4,10 +4,19 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment variables
-.env
-.env.*
-!.env.example   # Allow example env files to be committed
+# Environment variables (all folders)
+Beam-CMS/.env
+Beam-CMS/.env.*
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+*.env
+
+# But keep example env files
+!Beam-CMS/.env.example
+!backend/.env.example
+!frontend/.env.example
 
 # Logs
 logs
@@ -17,6 +26,11 @@ logs
 # Build output
 dist/
 build/
+
+# Strapi tmp/cache (if Beam-CMS is Strapi)
+Beam-CMS/.tmp/
+Beam-CMS/.cache/
+Beam-CMS/build/
 
 # OS files
 .DS_Store
