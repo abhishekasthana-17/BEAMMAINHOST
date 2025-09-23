@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: beam-cms-strapi
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_CLIENT
+        value: postgres
+      - key: DATABASE_SSL
+        value: true
+      - key: DATABASE_SSL_REJECT_UNAUTHORIZED
+        value: false
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+
+databases:
+  - name: beam-cms-postgres
+    plan: free
+    databaseName: beam_cms
+    user: beam_cms_user
