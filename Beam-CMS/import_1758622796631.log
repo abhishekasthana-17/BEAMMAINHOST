@@ -1,0 +1,40 @@
+[2025-09-23 15:49:56.635] info: [local-destination-provider] validating options
+
+[2025-09-23 15:49:56.641] info: [file-source-provider] getting metadata
+
+[2025-09-23 15:49:56.641] info: [local-destination-provider] getting metadata
+
+[2025-09-23 15:49:56.641] info: [file-source-provider] getting metadata
+
+[2025-09-23 15:49:56.641] info: [local-destination-provider] getting metadata
+
+[2025-09-23 15:49:56.641] info: [file-source-provider] getting schemas
+
+[2025-09-23 15:49:56.641] info: [file-source-provider] creating schemas read stream
+
+[2025-09-23 15:49:56.678] info: [local-destination-provider] getting schema
+
+[2025-09-23 15:49:56.893] info: [local-destination-provider] deleting all assets
+
+[2025-09-23 15:49:57.140] info: [local-destination-provider] deleted all assets
+
+[2025-09-23 15:49:57.140] info: [local-destination-provider] deleting record 
+
+[2025-09-23 15:50:01.924] info: [file-source-provider] creating schemas read stream
+
+[2025-09-23 15:50:01.990] info: [file-source-provider] creating entities read stream
+
+[2025-09-23 15:50:02.027] info: [local-destination-provider] creating entities stream
+
+[2025-09-23 15:50:08.189] info: [file-source-provider] creating assets read stream
+
+[2025-09-23 15:50:08.189] info: [local-destination-provider] creating assets write stream
+
+[2025-09-23 15:50:08.192] info: [file-source-provider] creating links read stream
+
+[2025-09-23 15:50:08.233] info: [local-destination-provider] creating links write stream
+
+[2025-09-23 15:50:13.466] info: [file-source-provider] creating configuration read stream
+
+[2025-09-23 15:50:13.509] info: [local-destination-provider] creating configuration write stream
+

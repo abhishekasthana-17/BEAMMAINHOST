@@ -1,0 +1,30 @@
+[2025-09-23 14:05:00.868] info: [file-destination-provider] creating gzip
+
+[2025-09-23 14:05:00.870] info: [local-source-provider] getting metadata
+
+[2025-09-23 14:05:00.870] info: [local-source-provider] getting metadata
+
+[2025-09-23 14:05:00.870] info: [local-source-provider] getting schemas
+
+[2025-09-23 14:05:00.872] info: [local-source-provider] getting schemas
+
+[2025-09-23 14:05:00.872] info: [file-destination-provider] creating schemas write stream
+
+[2025-09-23 14:05:00.882] info: [local-source-provider] creating entities read stream
+
+[2025-09-23 14:05:00.882] info: [file-destination-provider] creating entities write stream
+
+[2025-09-23 14:05:00.893] info: [local-source-provider] creating assets read stream
+
+[2025-09-23 14:05:00.893] info: [file-destination-provider] creating assets write stream
+
+[2025-09-23 14:05:00.895] info: [local-source-provider] creating links read stream
+
+[2025-09-23 14:05:00.895] info: [file-destination-provider] creating links write stream
+
+[2025-09-23 14:05:00.903] info: [local-source-provider] creating configuration read stream
+
+[2025-09-23 14:05:00.904] info: [file-destination-provider] creating configuration write stream
+
+[2025-09-23 14:05:00.908] info: [file-destination-provider] writing metadata
+

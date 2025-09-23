@@ -1,0 +1,5 @@
+[2025-09-23 15:45:58.093] info: [local-destination-provider] validating options
+
+[2025-09-23 15:45:58.096] error: [FATAL] Key is incorrect or the file 'strapi-export.tar.gz.tar.gz.enc' is not a valid Strapi data file.
+[2025-09-23 15:45:58.097] info: [local-destination-provider] Rolling back transaction
+
