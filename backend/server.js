@@ -15,6 +15,7 @@ const investorRoutes = require('./routes/investorRoutes');
 const careerRoutes = require('./routes/careerRoutes');
 const localPartnerRoutes = require('./routes/localPartnerRoutes');
 const consentRoutes = require('./routes/consentRoutes');
+const newsletterRoutes = require('./routes/newsletterRoutes');
 
 const app = express();
 const port = config.server.port || 3001;
@@ -57,6 +58,7 @@ app.use('/api', investorRoutes);
 app.use('/api', careerRoutes);
 app.use('/api', localPartnerRoutes);
 app.use('/api', consentRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 // Basic route for testing
 app.get('/', (req, res) => {

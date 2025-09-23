@@ -123,7 +123,7 @@ const NewsletterPopup = () => {
         console.log('Subscription data:', { email, category });
 
         // Make API call to newsletter backend
-        const apiUrl = import.meta.env.VITE_NEWSLETTER_API_URL || 'http://localhost:3000';
+        const apiUrl = import.meta.env.VITE_NEWSLETTER_API_URL || 'http://localhost:3001';
         const response = await fetch(`${apiUrl}/api/newsletter/subscribe`, {
           method: 'POST',
           headers: {
