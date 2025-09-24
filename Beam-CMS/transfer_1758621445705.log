@@ -1,3 +1,0 @@
-[2025-09-23 15:27:25.708] info: [remote-destination-provider] establishing websocket connection
-
-[2025-09-23 15:27:26.555] error: [FATAL] Failed to initialize the connection: Data transfer is not enabled on the remote host
