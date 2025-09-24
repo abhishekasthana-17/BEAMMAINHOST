@@ -94,7 +94,12 @@ const fetchFromStrapi = async (endpoint, queryParams = {}) => {
       }
     }
 
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    headers: {
+      'Authorization': `Bearer ${import.meta.env.VITE_STRAPI_API_TOKEN}`,
+      'Content-Type': 'application/json'
+    }
+  });
 
   if (!response.ok) {
     throw new Error(`Error fetching from Strapi: ${response.status} ${response.statusText}.`);
