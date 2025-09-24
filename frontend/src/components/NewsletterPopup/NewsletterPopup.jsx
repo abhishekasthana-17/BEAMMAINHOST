@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './NewsletterPopup.css';
 import logoBeam from '../../assets/images/logo_beam.png';
 
 const NewsletterPopup = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState({ type: '', message: '' });
   const [isAnimating, setIsAnimating] = useState(false);
-  const [popupPhase, setPopupPhase] = useState('showing'); // waiting, showing, hiding, completed
+  const [popupPhase, setPopupPhase] = useState('waiting'); // waiting, showing, hiding, completed
 
   // Timing refs
   const initialTimerRef = useRef(null);
@@ -50,6 +51,22 @@ const NewsletterPopup = () => {
       setIsAnimating(false);
     }, 300);
   }, []);
+
+  // Check if user has already provided email and if we're on a career page
+  useEffect(() => {
+    const hasProvidedEmail = localStorage.getItem('beam_newsletter_email_provided');
+    const isCareerPage = location.pathname.startsWith('/careers');
+    
+    // Only show popup if user hasn't provided email and is on a career page
+    if (!hasProvidedEmail && isCareerPage && popupPhase === 'waiting') {
+      // Show popup after a short delay
+      const timer = setTimeout(() => {
+        showPopup();
+      }, 1000); // 1 second delay
+      
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname, popupPhase, showPopup]);
 
   // Initial popup timer - removed since popup shows immediately
   // useEffect(() => {
@@ -126,6 +143,9 @@ const NewsletterPopup = () => {
           type: 'success',
           message: `Thank you! You've successfully subscribed to our newsletter. Check your email for confirmation.`
         });
+        
+        // Store in localStorage that user has provided email
+        localStorage.setItem('beam_newsletter_email_provided', 'true');
         
         setEmail('');
         setErrors({});
