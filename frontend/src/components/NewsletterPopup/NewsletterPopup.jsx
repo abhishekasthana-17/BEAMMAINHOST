@@ -1,30 +1,22 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import './NewsletterPopup.css';
 import logoBeam from '../../assets/images/logo_beam.png';
 
 const NewsletterPopup = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [email, setEmail] = useState('');
-  const [category, setCategory] = useState('');
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState({ type: '', message: '' });
   const [isAnimating, setIsAnimating] = useState(false);
-  const [popupPhase, setPopupPhase] = useState('waiting'); // waiting, showing, hiding, completed
+  const [popupPhase, setPopupPhase] = useState('showing'); // waiting, showing, hiding, completed
 
   // Timing refs
   const initialTimerRef = useRef(null);
   const reappearTimerRef = useRef(null);
   const popupShownRef = useRef(false);
-
-  const categoryOptions = [
-    { value: 'general-updates', label: 'General Updates' },
-    { value: 'product-releases', label: 'Product Releases' },
-    { value: 'security-alerts', label: 'Security Alerts' },
-    { value: 'partnership-news', label: 'Partnership News' },
-    { value: 'community-events', label: 'Community Events' },
-    { value: 'developer-resources', label: 'Developer Resources' },
-  ];
 
   // Clear all timers
   const clearAllTimers = useCallback(() => {
@@ -59,34 +51,26 @@ const NewsletterPopup = () => {
     }, 300);
   }, []);
 
-  // Initial popup timer (6 seconds)
-  useEffect(() => {
-    if (!popupShownRef.current && popupPhase === 'waiting') {
-      initialTimerRef.current = setTimeout(() => {
-        showPopup();
-      }, 6000); // 6 seconds
-    }
+  // Initial popup timer - removed since popup shows immediately
+  // useEffect(() => {
+  //   if (!popupShownRef.current && popupPhase === 'waiting') {
+  //     initialTimerRef.current = setTimeout(() => {
+  //       showPopup();
+  //     }, 6000); // 6 seconds
+  //   }
 
-    return () => {
-      if (initialTimerRef.current) {
-        clearTimeout(initialTimerRef.current);
-      }
-    };
-  }, [showPopup, popupPhase]);
+  //   return () => {
+  //     if (initialTimerRef.current) {
+  //       clearTimeout(initialTimerRef.current);
+  //     }
+  //   };
+  // }, [showPopup, popupPhase]);
 
-  // Handle close modal with reappear logic
+  // Handle close modal - disabled for mandatory popup
   const handleCloseModal = useCallback(() => {
-    hidePopup();
-    
-    // Only set reappear timer if not completed
-    if (popupPhase !== 'completed') {
-      reappearTimerRef.current = setTimeout(() => {
-        if (popupPhase !== 'completed') {
-          showPopup();
-        }
-      }, 30000); // 30 seconds
-    }
-  }, [hidePopup, showPopup, popupPhase]);
+    // Popup cannot be closed until email is submitted
+    return;
+  }, []);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -104,8 +88,8 @@ const NewsletterPopup = () => {
       newErrors.email = 'Please enter a valid email address';
     }
     
-    if (!category?.trim()) {
-      newErrors.category = 'Please select a category';
+    if (!agreeToTerms) {
+      newErrors.terms = 'You must agree to the terms and conditions';
     }
     
     setErrors(newErrors);
@@ -120,7 +104,7 @@ const NewsletterPopup = () => {
       setStatusMessage({ type: '', message: '' });
 
       try {
-        console.log('Subscription data:', { email, category });
+        console.log('Subscription data:', { email });
 
         // Make API call to newsletter backend
         const apiUrl = import.meta.env.VITE_NEWSLETTER_API_URL || 'http://localhost:3001';
@@ -129,7 +113,7 @@ const NewsletterPopup = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email, category }),
+          body: JSON.stringify({ email }),
         });
 
         if (!response.ok) {
@@ -140,16 +124,20 @@ const NewsletterPopup = () => {
         
         setStatusMessage({
           type: 'success',
-          message: `Thank you! You've successfully subscribed to ${data.data?.category?.replace('-', ' ')} updates. Check your email for confirmation.`
+          message: `Thank you! You've successfully subscribed to our newsletter. Check your email for confirmation.`
         });
         
         setEmail('');
-        setCategory('');
         setErrors({});
         
         // Mark popup system as completed after successful subscription
         setPopupPhase('completed');
         clearAllTimers();
+        
+        // Hide the popup after successful submission
+        setTimeout(() => {
+          setIsModalOpen(false);
+        }, 3000); // Hide after 3 seconds to show success message
         
       } catch (error) {
         setStatusMessage({
@@ -203,7 +191,6 @@ const NewsletterPopup = () => {
   return (
     <div 
       className={`newsletter-modal-overlay ${isAnimating ? 'animating' : ''}`}
-      onClick={handleCloseModal}
       role="dialog"
       aria-modal="true"
       aria-labelledby="newsletter-title"
@@ -214,25 +201,13 @@ const NewsletterPopup = () => {
         onClick={(e) => e?.stopPropagation()}
         ref={modalRef}
       >
-        <button 
-          className="newsletter-close-btn"
-          onClick={handleCloseModal}
-          ref={closeButtonRef}
-          aria-label="Close newsletter popup"
-        >
-          ×
-        </button>
         
         <div className="newsletter-popup">
           {/* Logo Section */}
           <div className="newsletter-logo-section">
             <img src={logoBeam} alt="Beam Wallet Logo" className="newsletter-logo-image" />
 
-            <h1 id="newsletter-title" className="newsletter-main-heading">Stay Updated with Beam Wallet</h1>
-            <p id="newsletter-description" className="newsletter-subheading">
-              Get the latest updates, exclusive offers, and insights delivered straight to your inbox. 
-              Join thousands of users who trust Beam Wallet for their digital transactions.
-            </p>
+            <h1 id="newsletter-title" className="newsletter-main-heading">To continue, we kindly ask you to enter your email (to avoid spam) and agree to our Terms and Conditions</h1>
           </div>
 
           {/* Status Message */}
@@ -263,22 +238,20 @@ const NewsletterPopup = () => {
               {errors?.email && <span id="email-error" className="newsletter-error-message" role="alert">{errors?.email}</span>}
             </div>
 
-            <div className="newsletter-form-group">
-              <select
-                value={category}
-                onChange={(e) => setCategory(e?.target?.value)}
-                className={`newsletter-category-select ${errors?.category ? 'error' : ''}`}
-                required
-                aria-describedby={errors?.category ? 'category-error' : undefined}
-              >
-                <option value="">Select a category</option>
-                {categoryOptions?.map((option) => (
-                  <option key={option?.value} value={option?.value}>
-                    {option?.label}
-                  </option>
-                ))}
-              </select>
-              {errors?.category && <span id="category-error" className="newsletter-error-message" role="alert">{errors?.category}</span>}
+            <div className="newsletter-form-group newsletter-checkbox-group">
+              <label className="newsletter-checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={agreeToTerms}
+                  onChange={(e) => setAgreeToTerms(e.target.checked)}
+                  className={`newsletter-checkbox ${errors?.terms ? 'error' : ''}`}
+                  aria-describedby={errors?.terms ? 'terms-error' : undefined}
+                />
+                <span className="newsletter-checkbox-text">
+                  I agree to the <Link to="/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="newsletter-terms-link">Terms and Conditions</Link>
+                </span>
+              </label>
+              {errors?.terms && <span id="terms-error" className="newsletter-error-message" role="alert">{errors?.terms}</span>}
             </div>
 
             <button
@@ -287,21 +260,11 @@ const NewsletterPopup = () => {
               disabled={isLoading}
               aria-describedby="subscribe-status"
             >
-              {isLoading ? 'Subscribing...' : 'Subscribe Now'}
+              {isLoading ? 'Agreeing...' : 'Agree'}
             </button>
           </form>
 
-          {/* Trust Indicators */}
-          <div className="newsletter-trust-indicators">
-            <div className="newsletter-trust-item">
-              <span className="newsletter-check-icon">✓</span>
-              <span>No spam, unsubscribe anytime</span>
-            </div>
-            <div className="newsletter-trust-item">
-              <span className="newsletter-check-icon">✓</span>
-              <span>Secure and encrypted</span>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

@@ -275,6 +275,89 @@
   margin-top: 4px;
 }
 
+.newsletter-checkbox-group {
+  margin: 8px 0;
+}
+
+.newsletter-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #06303A;
+  line-height: 1.4;
+}
+
+.newsletter-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.newsletter-checkbox:checked {
+  background-color: #FF2069;
+  border-color: #FF2069;
+}
+
+.newsletter-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 4px;
+  height: 8px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  display: block;
+}
+
+.newsletter-checkbox:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 32, 105, 0.1);
+}
+
+.newsletter-checkbox.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.newsletter-checkbox-text {
+  flex: 1;
+}
+
+/* Terms and Conditions link styling */
+.newsletter-terms-link {
+  color: #FF2069;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.newsletter-terms-link:hover {
+  color: #e01d5a;
+  text-decoration: underline;
+}
+
+.newsletter-terms-link:focus {
+  outline: 2px solid #FF2069;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .newsletter-subscribe-btn {
   font-family: 'Nunito', sans-serif;
   font-size: 16px;
