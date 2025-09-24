@@ -2,7 +2,7 @@ const { addRowToGoogleSheet } = require('../services/googleSheetsService');
 
 const newsletterSubscribe = async (req, res) => {
   try {
-    const { email, category } = req.body;
+    const { email } = req.body;
 
     if (!email) {
       return res.status(400).json({ 
@@ -20,8 +20,8 @@ const newsletterSubscribe = async (req, res) => {
       });
     }
 
-    // Add email and category to Google Sheet
-    await addRowToGoogleSheet([email, category || 'Not specified', new Date().toISOString()]);
+    // Add email to Google Sheet
+    await addRowToGoogleSheet([email, new Date().toISOString()]);
 
     res.status(200).json({ 
       success: true, 
