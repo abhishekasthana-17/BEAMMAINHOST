@@ -52,13 +52,13 @@ const NewsletterPopup = () => {
     }, 300);
   }, []);
 
-  // Check if user has already provided email and if we're on a career page
+  // Check if user has already provided email and if we're on the home page
   useEffect(() => {
     const hasProvidedEmail = localStorage.getItem('beam_newsletter_email_provided');
-    const isCareerPage = location.pathname.startsWith('/careers');
+    const isHomePage = location.pathname === '/';
     
-    // Only show popup if user hasn't provided email and is on a career page
-    if (!hasProvidedEmail && isCareerPage && popupPhase === 'waiting') {
+    // Only show popup if user hasn't provided email and is on the home page
+    if (!hasProvidedEmail && isHomePage && popupPhase === 'waiting') {
       // Show popup after a short delay
       const timer = setTimeout(() => {
         showPopup();
