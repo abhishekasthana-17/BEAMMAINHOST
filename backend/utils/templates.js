@@ -1,65 +1,87 @@
-// Email template utilities
+const fs = require('fs');
+const path = require('path');
 
-/**
- * Email templates with placeholders
- * Placeholders are in the format \\\PLACEHOLDER_NAME\\\
- * These will be replaced with actual values when sending emails
- * STILL NEED TO IMPROVE THIS
- * - Add more templates for other forms
- * - Add HTML templates
- */
+// Email templates
 const templates = {
-  // Contact form confirmation to user
-  contactConfirmation: `
-Thank You for Contacting Us
-
-Dear \\\FIRST_NAME\\\,
-
-We have received your message and will get back to you as soon as possible.
-
-Best regards,
-The BEAM Wallet Team
+  contactFormConfirmation: `
+    Thank you for contacting us!
+    
+    We have received your message and will get back to you within 24 hours.
+    
+    Your message:
+    Subject: {{subject}}
+    Message: {{message}}
+    
+    Best regards,
+    The Team
   `,
   
-  // Contact form notification to team
-  contactNotification: `
-CONTACT
-
-New Contact Form Submission:
-Name: \\\FULL_NAME\\\
-Email: \\\EMAIL\\\
-Subject: \\\SUBJECT\\\
-
-Message:
-\\\MESSAGE\\\
-
-Beam Wallet
-  `,
+  contactFormNotification: `
+    New Contact Form Submission
+    
+    From: {{name}} ({{email}})
+    Subject: {{subject}}
+    
+    Message:
+    {{message}}
+    
+    Submitted at: {{timestamp}}
+  `
 };
 
-/**
- * Replaces placeholders in a template with actual values
- * @param {string} templateName - Name of the template to use
- * @param {object} replacements - Object with keys matching placeholder names and values to replace them with
- * @returns {string} - Processed template with replacements
+// Process template with data
+const processTemplate = (templateName, data) => {
+  let template = templates[templateName];
+  if (!template) {
+    throw new Error(`Template ${templateName} not found`);
+  }
+  
+  // Replace placeholders with actual data
+  Object.keys(data).forEach(key => {
+    const placeholder = `{{${key}}}`;
+    template = template.replace(new RegExp(placeholder, 'g'), data[key] || '');
+  });
+  
+  return template;
+};
+
+/*
+ * Replaces placeholders in HTML file or content with provided data
+ * @param {string} templatePath - Path to HTML file or direct HTML content
+ * @param {Object} data - Data to replace placeholders with
+ * @returns {string} - Processed HTML content
  */
-const processTemplate = (templateName, replacements) => {
-  if (!templates[templateName]) {
-    throw new Error(`Template "${templateName}" not found`);
+const replaceInHtmlFile = async (templatePath, data = {}) => {
+  try {
+    let htmlContent;
+    
+    // Check if templatePath is a file path or direct HTML content
+    if (templatePath.includes('<html') || templatePath.includes('<!DOCTYPE')) {
+      // Direct HTML content
+      htmlContent = templatePath;
+    } else {
+      // File path - read from file system
+      const fullPath = path.isAbsolute(templatePath) 
+        ? templatePath 
+        : path.join(__dirname, '..', 'templates', templatePath);
+      
+      htmlContent = fs.readFileSync(fullPath, 'utf8');
+    }
+    
+    // Replace placeholders with actual data
+    Object.keys(data).forEach(key => {
+      const placeholder = new RegExp(`{{${key}}}`, 'g');
+      htmlContent = htmlContent.replace(placeholder, data[key] || '');
+    });
+    
+    return htmlContent;
+  } catch (error) {
+    console.error('Error processing HTML template:', error.message);
+    throw new Error(`Failed to process HTML template: ${error.message}`);
   }
-  
-  let content = templates[templateName];
-  
-  // Replace each placeholder with its value
-  for (const [key, value] of Object.entries(replacements)) {
-    const placeholder = `\\\\\\${key}\\\\\\`;
-    content = content.replace(new RegExp(placeholder, 'g'), value || '');
-  }
-  
-  return content;
 };
 
 module.exports = {
   processTemplate,
-  templates
-}; 
+  replaceInHtmlFile
+};

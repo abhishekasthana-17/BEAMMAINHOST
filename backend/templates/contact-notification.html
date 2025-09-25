@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact Form Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: #e74c3c;
+            margin-bottom: 30px;
+        }
+        .alert {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .message-content {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 New Contact Form Submission</h1>
+        </div>
+        
+        <div class="alert">
+            <strong>Action Required:</strong> A new contact form has been submitted and requires your attention.
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-label">Name:</div>
+            <div>{{name}}</div>
+            
+            <div class="info-label">Email:</div>
+            <div><a href="mailto:{{email}}">{{email}}</a></div>
+            
+            <div class="info-label">Subject:</div>
+            <div>{{subject}}</div>
+            
+            <div class="info-label">Submitted:</div>
+            <div>{{timestamp}}</div>
+        </div>
+        
+        <div class="message-content">
+            <h3>Message:</h3>
+            <p>{{message}}</p>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Contact Management System</strong></p>
+            <p><small>Please respond to the customer within 24 hours for best customer experience.</small></p>
+        </div>
+    </div>
+</body>
+</html>
