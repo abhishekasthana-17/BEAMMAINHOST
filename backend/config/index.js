@@ -37,7 +37,9 @@ module.exports = {
     origin: [
       'https://beamwallet.com',
       'https://www.beamwallet.com',
-      'http://localhost:3000'
+      'http://localhost:3000',
+      'https://beammainhost.vercel.app',
+      'http://localhost:5173'
     ],
     methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,
@@ -55,4 +57,4 @@ module.exports = {
   google: {
     appsScriptWebAppUrl: process.env.GOOGLE_APPS_SCRIPT_WEBAPP_URL,
   },
-}; 
+};
