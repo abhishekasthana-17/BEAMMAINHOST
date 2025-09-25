@@ -1,5 +1,5 @@
 // Controller for contact form functionality
-const { sendNotificationEmail } = require('../services/emailService');
+const { sendNotificationEmail, sendHtmlEmail } = require('../services/emailService');
 const { processTemplate } = require('../utils/templates');
 const config = require('../config');
 
@@ -30,23 +30,45 @@ const submitContactForm = async (req, res) => {
     // Form data already validated by middleware
     const formData = req.body;
     
-   
-    
     // Get the destination email based on the selected subject
     const destinationEmail = config.subjectToEmail[formData.subject] || 'support@beamwallet.com';
     
-    // Use direct text formatting instead of template for debugging
-    const emailContent = formatContactText(formData);
+    // Send HTML email notification using the new service
+    const emailData = {
+      destination: {
+        email: destinationEmail
+      },
+      subject: `New ${formData.subject} Form Submission`,
+      template: 'contact-notification.html'
+    };
+
+    const templateData = {
+      name: `${formData.firstName} ${formData.lastName}`,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      timestamp: new Date().toLocaleString()
+    };
+
+    // Send HTML email notification
+    await sendHtmlEmail(emailData, templateData, destinationEmail);
     
-    // Send email notification - use the specific subject as the from address to avoid duplicate emails
-    // This prevents participate@beamwallet.com from receiving copies of every email
-    await sendNotificationEmail(
-      destinationEmail,
-      `New ${formData.subject} Form Submission`,
-      emailContent,
-      [], // No attachments
-      destinationEmail // Use the destination email as the FROM email to prevent duplicates
-    );
+    // Send confirmation email to the user
+    const confirmationData = {
+      destination: {
+        email: formData.email
+      },
+      subject: 'Thank you for contacting us',
+      template: 'contact-confirmation.html'
+    };
+
+    const confirmationTemplateData = {
+      name: formData.firstName,
+      subject: formData.subject,
+      message: formData.message
+    };
+
+    await sendHtmlEmail(confirmationData, confirmationTemplateData);
     
     // Return success response
     return res.status(200).json({ 
@@ -65,4 +87,4 @@ const submitContactForm = async (req, res) => {
 
 module.exports = {
   submitContactForm
-}; 
+};
