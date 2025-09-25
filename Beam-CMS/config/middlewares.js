@@ -42,6 +42,12 @@ module.exports = [
         'http://strapicmsbeam.s3-website.eu-central-1.amazonaws.com',
         'https://sitebackend.beamwallet.com',
         'http://ec2-3-66-164-98.eu-central-1.compute.amazonaws.com:1337',
+        // Vercel deployed frontend
+        'https://beammainhost.vercel.app',
+        // Common deployment platforms
+        /\.netlify\.app$/,
+        /\.vercel\.app$/,
+        /\.onrender\.com$/,
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
