@@ -6,7 +6,11 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'http:', 'https:'].concat(process.env.NODE_ENV === 'development' ? ['ws:'] : []),
+          'connect-src': [
+            "'self'",
+            'http:',
+            'https:',
+          ].concat(process.env.NODE_ENV === 'development' ? ['ws:'] : []),
           'img-src': [
             "'self'",
             'data:',
@@ -32,21 +36,28 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       origin: [
+        // Local development
         'http://localhost:5173',
         'http://localhost:5174',
-        'http://localhost:3000', 
-        'http://localhost:1337', 
+        'http://localhost:3000',
+
+        // Your domains
         'https://beamwallet.com',
         'https://www.beamwallet.com',
         'https://strapi.beamwallet.com',
-        'http://strapicmsbeam.s3-website.eu-central-1.amazonaws.com',
         'https://sitebackend.beamwallet.com',
+
+        // Vercel deployed frontend (explicit)
+        'https://beamwebsite.vercel.app',
+        
+
+        // S3 / CloudFront / EC2
+        'http://strapicmsbeam.s3-website.eu-central-1.amazonaws.com',
         'http://ec2-3-66-164-98.eu-central-1.compute.amazonaws.com:1337',
-        // Vercel deployed frontend
-        'https://beammainhost.vercel.app',
-        // Common deployment platforms
-        /\.netlify\.app$/,
+
+        // Allow common hosting platforms via RegExp
         /\.vercel\.app$/,
+        /\.netlify\.app$/,
         /\.onrender\.com$/,
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
