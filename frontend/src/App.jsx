@@ -45,8 +45,8 @@ import {
 import MainLayout from "./components/Layout/MainLayout";
 import ChatBot from "./components/ChatBot/ChatBot";
 import ScrollToTop from "./components/ScrollToTop";
-import StrapiPage from "./components/StrapiPage";
-import StrapiAboutPage from "./components/StrapiAboutPage";
+// import StrapiPage from "./components/StrapiPage";
+// import StrapiAboutPage from "./components/StrapiAboutPage";
 import NewsletterPopup from "./components/NewsletterPopup/NewsletterPopup";
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="about-us" element={<StrapiAboutPage />} />
+            <Route path="about-us" element={<AboutPage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path="careers" element={<CareersPage />} />
             <Route
@@ -143,17 +143,17 @@ function App() {
               path="careers/sales-agent"
               element={<SalesAgent />}
             />
-            {/* Dynamic CMS pages */}
-            <Route path="cms/:contentType/:slug" element={<StrapiPage />} />
+            {/* Dynamic CMS pages - Commented out for static conversion */}
+            {/* <Route path="cms/:contentType/:slug" element={<StrapiPage />} /> */}
             {/* Test route for debugging */}
-            <Route
+            {/* <Route
               path="what-we-offer"
               element={<StrapiPage contentType="pages" slug="what-we-offer" />}
-            />
+            /> */}
             {/* Explicit 404 route */}
             <Route path="404" element={<NotFoundPage />} />
-            {/* Catch-all route for dynamic pages - tries to fetch from Strapi pages */}
-            <Route path=":slug" element={<StrapiPage contentType="pages" />} />
+            {/* Catch-all route for dynamic pages - Commented out for static conversion */}
+            {/* <Route path=":slug" element={<StrapiPage contentType="pages" />} /> */}
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
