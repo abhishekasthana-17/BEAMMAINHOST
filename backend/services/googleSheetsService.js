@@ -30,7 +30,7 @@ const addRowToGoogleSheet = async (values) => {
     });
 
     const sheets = google.sheets({ version: 'v4', auth });
-    const spreadsheetId = '1lDcf6yE1tdO226tO1HmoQWH8E-LDWcjwUHDMJMqLnUA';
+    const spreadsheetId = '1JNNj9gv3CSIlCkkthdbffmginbrd_cVQpcKCAzrQrc8';
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
