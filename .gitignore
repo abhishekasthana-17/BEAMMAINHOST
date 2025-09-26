@@ -39,3 +39,8 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.swp
+
+# Google Cloud Service Account Credentials
+backend/utils/newsletter-credentials.json
+**/newsletter-credentials.json
+**/*credentials*.json
