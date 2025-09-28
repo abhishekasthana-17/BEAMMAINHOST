@@ -23,10 +23,6 @@ logs
 *.log
 *.log.*
 
-# Build output
-dist/
-build/
-
 # Strapi tmp/cache (if Beam-CMS is Strapi)
 Beam-CMS/.tmp/
 Beam-CMS/.cache/
@@ -44,3 +40,4 @@ Thumbs.db
 backend/utils/newsletter-credentials.json
 **/newsletter-credentials.json
 **/*credentials*.json
+!**/*.template.json
