@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer";
+import { StrapiFooter } from "../Footer";
 import ConsentBanner from "../ConsentBanner/ConsentBanner";
 import PageShare from "../PageShare/PageShare";
 
@@ -15,7 +15,7 @@ const MainLayout = () => {
       <main className="main-content">
         <Outlet />
       </main>
-      <Footer />
+      <StrapiFooter />
       <ConsentBanner />
     </>
   );
