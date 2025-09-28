@@ -8,9 +8,11 @@ import partnerhotels from "../../assets/images/logo_partnerhotel.png";
 import sage from "../../assets/images/logo_sage.png";
 import competir from "../../assets/images/logo_competir.png";
 import sabersaude from "../../assets/images/logo_sabersaude.png";
-import dmcaImage from "../../assets/images/dmca.png";
-import seal65Image from "../../assets/images/seal_65.png";
 import { getFooter } from "../../utils/strapiService";
+
+// Import images using URL constructor for better path resolution
+const dmcaImage = new URL('../../assets/images/dmca.png', import.meta.url).href;
+const seal65Image = new URL('../../assets/images/seal_65.png', import.meta.url).href;
 
 const STRAPI_URL =
   import.meta.env.VITE_STRAPI_URL ||
@@ -28,12 +30,10 @@ const StrapiFooter = () => {
       try {
         setLoading(true);
         const data = await getFooter();
-        if (data) {
-          setFooterData(data);
-        }
-        setError(null);
+        setFooterData(data);
       } catch (err) {
-        setError(err.message);
+        console.error("Error fetching footer data:", err);
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -48,36 +48,44 @@ const StrapiFooter = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (email.trim()) {
-      try {
-        const apiUrl = import.meta.env.VITE_NEWSLETTER_API_URL || 'http://localhost:3001';
-        const response = await fetch(`${apiUrl}/api/newsletter/subscribe`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
-        });
-        
-        if (response.ok) {
-          // Only show success when data is actually saved
-          setShowSuccess(true);
-          setEmail("");
-          
-          // Hide success message after 3 seconds
-          setTimeout(() => {
-            setShowSuccess(false);
-          }, 3000);
-        } else {
-          // Handle API errors - you might want to add error state here
-          console.log("Newsletter subscription failed");
-        }
-      } catch (error) {
-        // Handle network errors
-        console.log("Newsletter subscription error:", error);
+    if (!email.trim()) return;
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setShowSuccess(true);
+        setEmail("");
+        setTimeout(() => setShowSuccess(false), 3000);
       }
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
     }
+  };
+
+  // Helper function to get image URL from Strapi
+  const getImageUrl = (imageField) => {
+    // Handle a single media object (like for the logo)
+    if (imageField && imageField.url) {
+      const url = imageField.url;
+      return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
+    }
+    // Handle a media field within a component, which is often an array
+    if (
+      Array.isArray(imageField) &&
+      imageField[0] &&
+      typeof imageField[0] === "object"
+    ) {
+      const url = imageField[0].url;
+      return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
+    }
+    return null;
   };
 
   // Use Strapi data if available, otherwise an empty object to avoid null derefs
@@ -97,31 +105,6 @@ const StrapiFooter = () => {
     console.error("Footer error, using fallback:", error);
   }
 
-  // Helper function to get image URL from Strapi
-  const getImageUrl = (imageField) => {
-    // Handle a single media object (like for the logo)
-    if (imageField && imageField.url) {
-      const url = imageField.url;
-      return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
-    }
-    // Handle a media field within a component, which is often an array
-    if (
-      Array.isArray(imageField) &&
-      imageField.length > 0 &&
-      imageField[0] &&
-      imageField[0].url
-    ) {
-      const url = imageField[0].url;
-      return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
-    }
-    // Handle data structure where image might be nested in 'data' property
-    if (imageField && imageField.data && imageField.data.attributes && imageField.data.attributes.url) {
-      const url = imageField.data.attributes.url;
-      return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
-    }
-    return null; // Return null if no valid image URL is found
-  };
-
   return (
     <footer className={styles.footer}>
       {/* Newsletter Section */}
@@ -131,16 +114,9 @@ const StrapiFooter = () => {
             {currentData.newsletterTitle || "Newsletter"}
           </h2>
           {showSuccess && (
-            <div style={{
-              backgroundColor: '#4CAF50',
-              color: 'white',
-              padding: '10px',
-              borderRadius: '5px',
-              marginBottom: '10px',
-              textAlign: 'center'
-            }}>
-              ✓ Thank you! You've successfully subscribed to our newsletter.
-            </div>
+            <p className={styles.successMessage}>
+              Thank you for subscribing to our newsletter!
+            </p>
           )}
           <form className={styles.newsletterForm} onSubmit={handleSubmit}>
             <input
@@ -157,11 +133,9 @@ const StrapiFooter = () => {
           </form>
         </div>
 
-        {/* Partners Section */}
         <div className={styles.partners}>
-          {currentData.Partner && currentData.Partner.length > 0 ? (
-            currentData.Partner.map((partner, index) => {
-              // Fallback to static images if Strapi images aren't loading
+          {currentData.partners && currentData.partners.length > 0 ? (
+            currentData.partners.map((partner, index) => {
               let imageUrl = getImageUrl(partner.image);
               
               // Fallback images based on partner name or index
@@ -183,21 +157,15 @@ const StrapiFooter = () => {
                   key={index}
                   src={imageUrl}
                   alt={partner.altText || partner.name || `Partner ${index + 1}`}
-                  onError={(e) => {
-                    console.error('Image failed to load:', e.target.src);
-                    // Try to load from static assets as fallback
-                    if (partner.name === 'Sage') e.target.src = logoBeam; // Just as an example fallback
-                  }}
                 />
               );
             })
           ) : (
-            // Fallback to static partner images if no Strapi data
             <>
-              <img src={new URL('../../assets/images/logo_sage.png', import.meta.url).href} alt="Sage" />
-              <img src={new URL('../../assets/images/logo_competir.png', import.meta.url).href} alt="Competir" />
-              <img src={new URL('../../assets/images/logo_partnerhotel.png', import.meta.url).href} alt="Partner Hotels" />
-              <img src={new URL('../../assets/images/logo_sabersaude.png', import.meta.url).href} alt="Saber Saude" />
+              <img src={sage} alt="Sage" />
+              <img src={competir} alt="Competir" />
+              <img src={partnerhotels} alt="Partner Hotels" />
+              <img src={sabersaude} alt="Saber Saude" />
             </>
           )}
         </div>
@@ -228,7 +196,17 @@ const StrapiFooter = () => {
                     return null;
                   })
                 ) : (
-                  <p>{currentData.description}</p>
+                  <>
+                    <p>
+                      BEAM is a marketing platform and digital wallet that
+                      processes electronic payments.
+                    </p>
+                    <p>
+                      It operates from smartphones of Consumers/Users who download
+                      this application, giving them immediate benefits with every
+                      purchase.
+                    </p>
+                  </>
                 )}
               </div>
             </div>
@@ -237,13 +215,13 @@ const StrapiFooter = () => {
           {/* Quick Links Column */}
           <div className={styles.footerColumn}>
             <h3 className={styles.columnTitle}>
-              {currentData.quickLinksTitle || "Quick Link"}
+              {currentData.quickLinksTitle || "Quick Links"}
             </h3>
             <ul className={styles.footerLinks}>
-              {currentData.quickLinks && currentData.quickLinks.length > 0 ? (
-                currentData.quickLinks.map((link, index) => (
+              {currentData.links && currentData.links.length > 0 ? (
+                currentData.links.map((link, index) => (
                   <li key={index}>
-                    {link.external ? (
+                    {link.isExternal ? (
                       <a
                         href={link.url}
                         target="_blank"
@@ -293,14 +271,14 @@ const StrapiFooter = () => {
               <a
                 href={
                   currentData.appStoreUrl ||
-                  "https://apps.apple.com/app/beam-wallet"
+                  "https://apps.apple.com/us/app/beam-wallet/id1446974079"
                 }
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
                   src={appStore}
-                  alt="Download on App Store"
+                  alt="Download on the App Store"
                   className={styles.downloadButton}
                 />
               </a>
@@ -324,118 +302,101 @@ const StrapiFooter = () => {
 
         <hr className={styles.hr} />
 
-        {/* Bottom Footer */}
         <div className={styles.bottomFooter}>
           <div className={styles.socialContainer}>
-            {/* Social Icons */}
             <div className={styles.socialIcons}>
-              {currentData.socialLinks && currentData.socialLinks.length > 0 ? (
-                currentData.socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className={social.iconClass}></i>
-                  </a>
-                ))
-              ) : (
-                <>
-                  <a
-                    href="https://www.instagram.com/beamwallet/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-instagram"></i>
-                  </a>
-                  <a
-                    href="https://www.facebook.com/thebeamwallet/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-facebook-f"></i>
-                  </a>
-                  <a
-                    href="https://x.com/beamwallet"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-x-twitter"></i>
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/beam-wallet/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-linkedin-in"></i>
-                  </a>
-                  <a
-                    href="https://www.youtube.com/@beamwallet"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-youtube"></i>
-                  </a>
-                  <a
-                    href="https://medium.com/beam-wallet"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-medium"></i>
-                  </a>
-                  <a
-                    href="https://t.me/s/beamwalletgbc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-telegram"></i>
-                  </a>
-                  <a
-                    href="https://www.tiktok.com/@beamwallet"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-tiktok"></i>
-                  </a>
-                  <a
-                    href="https://pt.pinterest.com/06e88r16nl83mr975pe7zlnr4qtu6o/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                  >
-                    <i className="fa-brands fa-pinterest-p"></i>
-                  </a>
-                </>
-              )}
+              <a
+                href="https://www.instagram.com/beamwallet/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.facebook.com/thebeamwallet/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://x.com/beamwallet"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-x-twitter"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/beam-wallet/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@beamwallet"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-youtube"></i>
+              </a>
+              <a
+                href="https://medium.com/beam-wallet"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-medium"></i>
+              </a>
+              <a
+                href="https://t.me/s/beamwalletgbc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-telegram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@beamwallet"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-tiktok"></i>
+              </a>
+              <a
+                href="https://pt.pinterest.com/06e88r16nl83mr975pe7zlnr4qtu6o/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+              >
+                <i className="fa-brands fa-pinterest-p"></i>
+              </a>
             </div>
 
-            {/* Legal Text */}
             <div className={styles.legalText}>
-              <p>{currentData.copyrightText}</p>
-              <p>{currentData.legalText}</p>
+              <p>
+                BEAM is a registered trademark of{" "}
+                <a href="https://gbc.sa" target="_blank" rel="noopener noreferrer">
+                  GBC S.A.
+                </a>
+              </p>
+              <p>Copyright ©{new Date().getFullYear()} | All rights reserved</p>
             </div>
 
-            {/* Certifications - Always show DMCA and Seal 65 */}
+            {/* Add certification badges */}
             <div className={styles.certifications}>
-              {/* Always display DMCA and Seal 65 certifications */}
               <a href="https://www.dmca.com/Protection/Status.aspx?id=fc54b3fe-07dd-49a0-9252-696567770cd1&refurl=https%3a%2f%2fbeamwallet.com%2f&rlo=true" target="_blank" rel="noopener noreferrer" className={styles.certLink}>
                 <img src={dmcaImage} alt="DMCA Protected" className={styles.certBadge} />
               </a>
               <a href="https://my-pci.usd.de/compliance/2909-2A2C-E055-8FEA-A952-A7AC/details_en.html" target="_blank" rel="noopener noreferrer" className={styles.certLink}>
                 <img src={seal65Image} alt="Seal 65" className={styles.certBadge} />
               </a>
-              
-              
             </div>
           </div>
         </div>

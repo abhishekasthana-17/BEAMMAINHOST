@@ -7,9 +7,11 @@ import competir from "../../assets/images/logo_competir.png";
 import logoBeam from "../../assets/images/logo_beam_footer.png";
 import appStore from "../../assets/icons/logo_app_store_footer.png";
 import googlePlay from "../../assets/icons/logo_google_play_footer.png";
-import dmcaImage from "../../assets/images/dmca.png";
-import seal65Image from "../../assets/images/seal_65.png";
 import { Link } from "react-router-dom";
+
+// Import images using URL constructor for better path resolution
+const dmcaImage = new URL('../../assets/images/dmca.png', import.meta.url).href;
+const seal65Image = new URL('../../assets/images/seal_65.png', import.meta.url).href;
 
 const Footer = () => {
   const [email, setEmail] = useState("");
