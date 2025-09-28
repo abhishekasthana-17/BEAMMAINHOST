@@ -7,6 +7,8 @@ import competir from "../../assets/images/logo_competir.png";
 import logoBeam from "../../assets/images/logo_beam_footer.png";
 import appStore from "../../assets/icons/logo_app_store_footer.png";
 import googlePlay from "../../assets/icons/logo_google_play_footer.png";
+import dmcaImage from "../../assets/images/dmca.png";
+import seal65Image from "../../assets/images/seal_65.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -22,7 +24,7 @@ const Footer = () => {
     
     if (email.trim()) {
       try {
-        const apiUrl = import.meta.env.VITE_NEWSLETTER_API_URL || 'http://localhost:3001';
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
         const response = await fetch(`${apiUrl}/api/newsletter/subscribe`, {
           method: 'POST',
           headers: {
@@ -32,20 +34,16 @@ const Footer = () => {
         });
         
         if (response.ok) {
-          // Only show success when data is actually saved
           setShowSuccess(true);
           setEmail("");
           
-          // Hide success message after 3 seconds
           setTimeout(() => {
             setShowSuccess(false);
           }, 3000);
         } else {
-          // Handle API errors - you might want to add error state here
           console.log("Newsletter subscription failed");
         }
       } catch (error) {
-        // Handle network errors
         console.log("Newsletter subscription error:", error);
       }
     }
@@ -83,11 +81,7 @@ const Footer = () => {
         <div className={styles.footerContainer}>
           <div className={styles.footerColumn}>
             <div className={styles.logoSection}>
-              <img
-                src={logoBeam}
-                alt="Beam Logo"
-                className={styles.footerLogo}
-              />
+              <img src={logoBeam} alt="Beam Logo" className={styles.footerLogo} />
               <div className={styles.description}>
                 <p>
                   BEAM is a marketing platform and digital wallet that processes
@@ -133,13 +127,13 @@ const Footer = () => {
             <h3 className={styles.columnTitle}>Download BEAM</h3>
             <div className={styles.downloadButtons}>
               <a
-                href="https://apps.apple.com/app/beam-wallet"
+                href="https://apps.apple.com/us/app/beam-wallet/id1446974079"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
                   src={appStore}
-                  alt="Download on App Store"
+                  alt="Download on the App Store"
                   className={styles.downloadButton}
                 />
               </a>
@@ -242,6 +236,26 @@ const Footer = () => {
                 BEAM is a registered trademark of <a>GBC S.A.</a>
               </p>
               <p>Copyright ©{new Date().getFullYear()} | All rights reserved</p>
+            </div>
+
+            {/* Add certification badges */}
+            <div className={styles.certifications}>
+              <a 
+                href="https://www.dmca.com/Protection/Status.aspx?id=fc54b3fe-07dd-49a0-9252-696567770cd1&refurl=https%3a%2f%2fbeamwallet.com%2f&rlo=true" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.certLink}
+              >
+                <img src={dmcaImage} alt="DMCA Protected" className={styles.certBadge} />
+              </a>
+              <a 
+                href="https://my-pci.usd.de/compliance/2909-2A2C-E055-8FEA-A952-A7AC/details_en.html" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.certLink}
+              >
+                <img src={seal65Image} alt="Seal 65" className={styles.certBadge} />
+              </a>
             </div>
 
           </div>
