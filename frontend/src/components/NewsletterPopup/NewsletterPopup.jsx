@@ -121,9 +121,16 @@ const NewsletterPopup = () => {
         console.log('Subscription data:', { email });
 
         // Make API call to newsletter backend
-        const apiUrl = import.meta.env.VITE_NEWSLETTER_API_URL || 'http://localhost:3001';
-        
-        const response = await fetch(`${apiUrl}/api/newsletter/subscribe`, {
+        // Supports two env styles:
+        // 1) VITE_NEWSLETTER_API_URL = "http://<host>:3001" (server root)
+        // 2) VITE_NEWSLETTER_API_URL = "http://<host>:3001/api/newsletter" (newsletter base)
+        const envUrl = import.meta.env.VITE_NEWSLETTER_API_URL || 'http://localhost:3001';
+        const base = envUrl.replace(/\/+$/,'');
+        const finalUrl = /\/api\/newsletter$/.test(base)
+          ? `${base}/subscribe`
+          : `${base}/api/newsletter/subscribe`;
+
+        const response = await fetch(finalUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
