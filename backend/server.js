@@ -22,13 +22,8 @@ const port = config.server.port || 3001;
 
 // Middleware
 const allowedOrigins = [
-  'https://www.beamwallet.com',
-  'https://beamwallet.com', // Non-www version
-  'https://sitebackend.beamwallet.com', // Add your backend domain if it needs to make requests to itself, or for WebSocket origins etc.
-  'http://localhost:5173', // For local frontend development
-  'https://www.datagen.site',
-  'https://beam-source-code-9.vercel.app'
-   // Your production frontend
+  'http://cmsdev434140809432.s3-website.eu-central-1.amazonaws.com',
+  'http://localhost:5173'
 ];
 
 app.use(cors({
