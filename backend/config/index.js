@@ -39,7 +39,8 @@ module.exports = {
       'https://www.beamwallet.com',
       'http://localhost:3000',
       'https://beammainhost.vercel.app',
-      'http://localhost:5173'
+      'http://localhost:5173',
+      ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL.replace(/\/$/, '')] : [])
     ],
     methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,

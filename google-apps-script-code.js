@@ -7,6 +7,7 @@ function doPost(e) {
   try {
     // Parse the incoming data
     const data = JSON.parse(e.postData.contents);
+    const type = data.type || 'career';
     
     // Get or create the spreadsheet
     const spreadsheetId = 'YOUR_SPREADSHEET_ID_HERE'; // Replace with your Google Sheets ID
@@ -35,19 +36,25 @@ function doPost(e) {
       headerRange.setFontWeight('bold');
     }
     
-    // Prepare the row data
-    const rowData = [
-      data.timestamp || new Date().toISOString(),
-      data.firstName || '',
-      data.lastName || '',
-      data.email || '',
-      data.phone || '',
-      data.location || '',
-      data.positionArea || '',
-      data.linkedin || '',
-      data.portfolio || '',
-      data.additionalInfo || ''
-    ];
+    // Prepare the row data depending on type
+    let rowData;
+    if (type === 'newsletter') {
+      const values = data.values || [];
+      rowData = [new Date().toISOString()].concat(values);
+    } else {
+      rowData = [
+        data.timestamp || new Date().toISOString(),
+        data.firstName || '',
+        data.lastName || '',
+        data.email || '',
+        data.phone || '',
+        data.location || '',
+        data.positionArea || '',
+        data.linkedin || '',
+        data.portfolio || '',
+        data.additionalInfo || ''
+      ];
+    }
     
     // Add the data to the sheet
     sheet.appendRow(rowData);

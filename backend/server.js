@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 const config = require('./config');
+const corsMiddleware = require('./middleware/corsMiddleware');
 // const https = require('https'); // No longer needed here
 // const fs = require('fs'); // No longer needed here
 // const path = require('path'); // No longer needed here
@@ -21,28 +21,14 @@ const app = express();
 const port = config.server.port || 3001;
 
 // Middleware
-const allowedOrigins = [
-  'http://cmsdev434140809432.s3-website.eu-central-1.amazonaws.com',
-  'http://localhost:5173'
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // Allow requests with no origin (like mobile apps or curl requests)
-
-    const cleanOrigin = origin.replace(/\/$/, '');
-    if (allowedOrigins.includes(cleanOrigin)) {
-      return callback(null, true);
-    } else {
-      console.error("❌ CORS blocked:", origin);
-      return callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(corsMiddleware);
 app.use(express.json()); // for parsing application/json
+
+// Startup env logging to verify clean values loaded from .env
+const sanitize = (v) => (v || '').trim().replace(/^['"`]+|['"`]+$/g, '');
+console.log('ENV FRONTEND_URL:', sanitize(process.env.FRONTEND_URL));
+console.log('ENV GOOGLE_SHEETS_SPREADSHEET_ID:', sanitize(process.env.GOOGLE_SHEETS_SPREADSHEET_ID));
+console.log('ENV GOOGLE_SHEETS_RANGE:', sanitize(process.env.GOOGLE_SHEETS_RANGE));
 
 // API Routes
 app.use('/api', contactRoutes);
