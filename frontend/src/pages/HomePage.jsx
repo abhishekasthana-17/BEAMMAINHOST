@@ -427,18 +427,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-<section data-scroll-section style={{ minHeight: '100vh', background: '#f8f9fa', padding: '80px 0' }}>
-  <div data-scroll data-scroll-speed="2" style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '60px', color: '#FF2069' }}>
-    🚂 Locomotive Scroll Demo
-  </div>
-  <div data-scroll data-scroll-speed="-2" style={{ fontSize: '1.5rem', textAlign: 'center', marginBottom: '40px', color: '#06303A' }}>
-    Parallax effect: This text moves slower than the train above!
-  </div>
-  <div style={{ height: '600px', background: 'linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <img data-scroll data-scroll-speed="4" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Steam_locomotive_illustration.svg" alt="Locomotive" style={{ width: '300px', height: 'auto', boxShadow: '0 8px 32px rgba(0,0,0,0.15)', borderRadius: '20px' }} />
-  </div>
-  <div data-scroll data-scroll-speed="1" style={{ fontSize: '1.2rem', textAlign: 'center', marginTop: '60px', color: '#64748b' }}>
-    Scroll down to see the smooth effect!
-  </div>
-</section>

@@ -48,22 +48,11 @@ import ScrollToTop from "./components/ScrollToTop";
 // import StrapiPage from "./components/StrapiPage";
 // import StrapiAboutPage from "./components/StrapiAboutPage";
 import NewsletterPopup from "./components/NewsletterPopup/NewsletterPopup";
-import LocomotiveScroll from 'locomotive-scroll';
-import 'locomotive-scroll/dist/locomotive-scroll.css';
+// import LocomotiveScroll from 'locomotive-scroll';
+// import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 function App() {
-  React.useEffect(() => {
-    const scroll = new LocomotiveScroll({
-      el: document.querySelector('.main-content'),
-      smooth: true,
-      lerp: 0.07,
-      multiplier: 1,
-      class: 'is-inview',
-    });
-    return () => {
-      if (scroll) scroll.destroy();
-    };
-  }, []);
+  // Locomotive Scroll removed
   return (
     <>
       <Router>
@@ -74,20 +63,11 @@ function App() {
             <Route path="about-us" element={<AboutPage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path="careers" element={<CareersPage />} />
-            <Route
-              path="careers/spontaneous-application"
-              element={<ApplyPage />}
-            />
+            <Route path="careers/spontaneous-application" element={<ApplyPage />} />
             <Route path="careers/apply" element={<ApplyPage />} />
-            <Route
-              path="careers/apply"
-              element={<CareerApplicationPage />}
-            />
+            <Route path="careers/apply" element={<CareerApplicationPage />} />
             <Route path="investors" element={<InvestorsPage />} />
-            <Route
-              path="technology-partnerships"
-              element={<TechnologyPartnersPage />}
-            />
+            <Route path="technology-partnerships" element={<TechnologyPartnersPage />} />
             <Route path="banks" element={<Banks />} />
             <Route path="software-partners" element={<SoftwarePartners />} />
             <Route path="visionary-developers" element={<VisionaryDev />} />
