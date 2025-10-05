@@ -44,7 +44,7 @@ const NavBar = () => {
     const fetchNav = async () => {
       try {
         const flatNavData = await strapiService.getNavigation();
-
+        console.log('Fetched navigation data:', flatNavData); // <-- Log navigation data for debugging
         if (flatNavData && Array.isArray(flatNavData)) {
           const structuredNavItems = buildHierarchy(flatNavData);
           setNavItems(structuredNavItems);
@@ -64,7 +64,6 @@ const NavBar = () => {
         setNavItems(fallbackNavItems); // Ensure navItems is an array on error
       }
     };
-
     fetchNav();
   }, []);
 
