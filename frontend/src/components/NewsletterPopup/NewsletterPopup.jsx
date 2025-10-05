@@ -55,21 +55,18 @@ const NewsletterPopup = () => {
   // Show popup on every page visit
   useEffect(() => {
     // On mount, check localStorage for newsletter completion
-    useEffect(() => {
-      if (localStorage.getItem('beam_newsletter_email_provided') === 'true') {
-        setPopupPhase('completed');
-        setIsModalOpen(false);
-        return;
-      }
-      // Show popup whenever someone opens the website
-      if (popupPhase === 'waiting') {
-        const timer = setTimeout(() => {
-          showPopup();
-        }, 1000); // 1 second delay
-        return () => clearTimeout(timer);
-      }
-    }, [popupPhase, showPopup]);
-
+    if (localStorage.getItem('beam_newsletter_email_provided') === 'true') {
+      setPopupPhase('completed');
+      setIsModalOpen(false);
+      return;
+    }
+    // Show popup whenever someone opens the website
+    if (popupPhase === 'waiting') {
+      const timer = setTimeout(() => {
+        showPopup();
+      }, 1000); // 1 second delay
+      return () => clearTimeout(timer);
+    }
   }, [popupPhase, showPopup]);
 
   // Initial popup timer - removed since popup shows immediately
