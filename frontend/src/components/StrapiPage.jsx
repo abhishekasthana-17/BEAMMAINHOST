@@ -28,12 +28,13 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
         setLoading(true);
         console.log(`[StrapiPage] Fetching contentType: "${contentType}", slug: "${slug}"`);
         const response = await getContent(contentType, slug);
-        console.log(`[StrapiPage] Full response:`, response);
+        console.log("🔥 Full Strapi response:", response);
 
         const pages = response?.data || [];
         const matchingPage = pages.find(
           (page) => page?.attributes?.slug === slug
         );
+        console.log("🔍 Matching page:", matchingPage);
 
         if (!matchingPage) {
           console.warn(`No matching page found for slug "${slug}"`);
@@ -42,7 +43,7 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
         }
 
         const attributes = matchingPage.attributes;
-        console.log(`[StrapiPage] Page attributes:`, attributes);
+        console.log("📄 Page attributes:", attributes);
         setPageData(attributes);
       } catch (err) {
         console.error("Error fetching Strapi page:", err);
@@ -66,6 +67,12 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
 
   return (
     <div className="strapi-page">
+      {/* Optional page title */}
+      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
+        {pageData.title || "Untitled Page"}
+      </h1>
+
+      {/* SEO meta tags */}
       {pageData.seo && (
         <PageHelmet
           title={pageData.seo.metaTitle}
@@ -73,9 +80,11 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
         />
       )}
 
+      {/* Hero section */}
       {pageData.hero && <StrapiHero defaultContent={pageData.hero} />}
 
-      {Array.isArray(pageData.Content) &&
+      {/* Dynamic zone rendering */}
+      {Array.isArray(pageData.Content) && pageData.Content.length > 0 ? (
         pageData.Content.map((component, index) => {
           const componentType = component.__component?.split(".").pop();
 
@@ -97,7 +106,12 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
                 </div>
               );
           }
-        })}
+        })
+      ) : (
+        <p style={{ padding: "2rem", textAlign: "center" }}>
+          No content available for this page.
+        </p>
+      )}
     </div>
   );
 };
