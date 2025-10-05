@@ -54,15 +54,22 @@ const NewsletterPopup = () => {
 
   // Show popup on every page visit
   useEffect(() => {
-    // Show popup whenever someone opens the website
-    if (popupPhase === 'waiting') {
-      // Show popup after a short delay
-      const timer = setTimeout(() => {
-        showPopup();
-      }, 1000); // 1 second delay
-      
-      return () => clearTimeout(timer);
-    }
+    // On mount, check localStorage for newsletter completion
+    useEffect(() => {
+      if (localStorage.getItem('beam_newsletter_email_provided') === 'true') {
+        setPopupPhase('completed');
+        setIsModalOpen(false);
+        return;
+      }
+      // Show popup whenever someone opens the website
+      if (popupPhase === 'waiting') {
+        const timer = setTimeout(() => {
+          showPopup();
+        }, 1000); // 1 second delay
+        return () => clearTimeout(timer);
+      }
+    }, [popupPhase, showPopup]);
+
   }, [popupPhase, showPopup]);
 
   // Initial popup timer - removed since popup shows immediately
@@ -147,17 +154,13 @@ const NewsletterPopup = () => {
             type: 'success',
             message: `Thank you! Your subscription has been successfully recorded. Welcome to the BEAM community!`
           });
-          
-          // Note: Not storing in localStorage since we want popup to show every time
-          // localStorage.setItem('beam_newsletter_email_provided', 'true');
-          
+          // Store completion in localStorage so popup does not reappear
+          localStorage.setItem('beam_newsletter_email_provided', 'true');
           setEmail('');
           setErrors({});
-          
           // Mark popup system as completed after successful subscription
           setPopupPhase('completed');
           clearAllTimers();
-          
           // Hide the popup after successful submission
           setTimeout(() => {
             setIsModalOpen(false);
