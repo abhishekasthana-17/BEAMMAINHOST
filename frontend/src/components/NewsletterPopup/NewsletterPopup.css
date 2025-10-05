@@ -127,7 +127,7 @@
 .newsletter-main-heading {
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: normal;
   color: #06303A;
   margin-bottom: 10px;
   line-height: 1.2;
@@ -343,7 +343,7 @@
 .newsletter-terms-link {
   color: #FF2069;
   text-decoration: underline;
-  font-weight: 500;
+  font-weight: normal;
   transition: color 0.2s ease;
 }
 

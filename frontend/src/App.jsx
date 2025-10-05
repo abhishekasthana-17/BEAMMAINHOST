@@ -48,8 +48,22 @@ import ScrollToTop from "./components/ScrollToTop";
 // import StrapiPage from "./components/StrapiPage";
 // import StrapiAboutPage from "./components/StrapiAboutPage";
 import NewsletterPopup from "./components/NewsletterPopup/NewsletterPopup";
+import LocomotiveScroll from 'locomotive-scroll';
+import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 function App() {
+  React.useEffect(() => {
+    const scroll = new LocomotiveScroll({
+      el: document.querySelector('.main-content'),
+      smooth: true,
+      lerp: 0.07,
+      multiplier: 1,
+      class: 'is-inview',
+    });
+    return () => {
+      if (scroll) scroll.destroy();
+    };
+  }, []);
   return (
     <>
       <Router>

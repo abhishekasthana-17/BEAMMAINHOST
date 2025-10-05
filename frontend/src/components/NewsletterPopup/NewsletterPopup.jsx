@@ -283,7 +283,7 @@ const NewsletterPopup = () => {
                   aria-describedby={errors?.terms ? 'terms-error' : undefined}
                 />
                 <span className="newsletter-checkbox-text">
-                  I agree to the <Link to="/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="newsletter-terms-link">Terms and Conditions</Link>
+                  I agree to the <Link to="/terms-and-conditions" className="newsletter-terms-link">Terms and Conditions</Link>
                 </span>
               </label>
               {errors?.terms && <span id="terms-error" className="newsletter-error-message" role="alert">{errors?.terms}</span>}

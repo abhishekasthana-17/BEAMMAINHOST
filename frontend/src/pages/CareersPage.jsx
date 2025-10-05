@@ -68,8 +68,6 @@ const CareersPage = () => {
               <a
                 className={styles.applyNowBtn}
                 href={`/careers/apply?position=${encodeURIComponent(job.title)}`}
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label={`Apply now for ${job.title}`}
               >Apply Now</a>
             </div>
