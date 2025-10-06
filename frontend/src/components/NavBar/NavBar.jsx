@@ -45,20 +45,19 @@ const NavBar = () => {
       try {
         const flatNavData = await strapiService.getNavigation();
         console.log('Fetched navigation data:', flatNavData); // <-- Log navigation data for debugging
+        let structuredNavItems = [];
         if (flatNavData && Array.isArray(flatNavData)) {
-          const structuredNavItems = buildHierarchy(flatNavData);
-          setNavItems(structuredNavItems);
+          structuredNavItems = buildHierarchy(flatNavData);
         } else if (
           flatNavData &&
           flatNavData.data &&
           Array.isArray(flatNavData.data)
         ) {
           // This case might occur if the API wraps the array in a 'data' property
-          const structuredNavItems = buildHierarchy(flatNavData.data);
-          setNavItems(structuredNavItems);
-        } else {
-          setNavItems([]); // Set to empty array if format is unexpected
+          structuredNavItems = buildHierarchy(flatNavData.data);
         }
+        console.log('Structured navItems for rendering:', structuredNavItems); // <-- Log hierarchy for debugging
+        setNavItems(structuredNavItems);
       } catch (err) {
         console.error("Error fetching navigation:", err);
         setNavItems(fallbackNavItems); // Ensure navItems is an array on error

@@ -45,7 +45,7 @@ import {
 import MainLayout from "./components/Layout/MainLayout";
 import ChatBot from "./components/ChatBot/ChatBot";
 import ScrollToTop from "./components/ScrollToTop";
-// import StrapiPage from "./components/StrapiPage";
+import StrapiPage from "./components/StrapiPage";
 // import StrapiAboutPage from "./components/StrapiAboutPage";
 import NewsletterPopup from "./components/NewsletterPopup/NewsletterPopup";
 // import LocomotiveScroll from 'locomotive-scroll';
@@ -147,7 +147,7 @@ function App() {
             {/* Explicit 404 route */}
             <Route path="404" element={<NotFoundPage />} />
             {/* Catch-all route for dynamic pages - Commented out for static conversion */}
-            {/* <Route path=":slug" element={<StrapiPage contentType="pages" />} /> */}
+            <Route path=":slug" element={<StrapiPage contentType="pages" />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
