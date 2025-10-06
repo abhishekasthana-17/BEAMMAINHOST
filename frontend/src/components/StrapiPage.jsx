@@ -35,10 +35,10 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
         console.log("🔥 Full Strapi response:", response);
 
         const pages = response?.data || [];
-        console.log('[StrapiPage] Available slugs:', pages.map(p => p?.attributes?.slug));
+        console.log('[StrapiPage] Available slugs:', pages.map(p => p?.slug));
         // Case-insensitive matching (slug is already decoded)
         const matchingPage = pages.find(
-          (page) => page?.attributes?.slug?.toLowerCase() === slug?.toLowerCase()
+          (page) => page?.slug?.toLowerCase() === slug?.toLowerCase()
         );
         console.log("🔍 Matching page:", matchingPage);
 
@@ -49,7 +49,7 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
           return;
         }
 
-        const attributes = matchingPage.attributes;
+        const attributes = matchingPage;
         console.log("📄 Page attributes:", attributes);
         setPageData(attributes);
       } catch (err) {
