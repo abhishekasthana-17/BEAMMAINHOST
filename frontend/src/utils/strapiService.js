@@ -127,10 +127,9 @@ export const getContent = async (contentType, identifier = null) => {
   console.log(`[getContent] Using endpoint: "${endpoint}"`);
 
   if (identifier) {
-    // Encode the identifier (slug) for safe URL usage
-    const encodedIdentifier = encodeURIComponent(identifier);
-    finalQueryParams.filters = { slug: { eq: encodedIdentifier } };
-    console.log(`[getContent] First attempt - filtering by slug: "${encodedIdentifier}"`);
+    // Do NOT encode the identifier (slug) before passing to filters
+    finalQueryParams.filters = { slug: { eq: identifier } };
+    console.log(`[getContent] First attempt - filtering by slug: "${identifier}"`);
     console.log(`[getContent] Query params:`, finalQueryParams);
 
     try {
