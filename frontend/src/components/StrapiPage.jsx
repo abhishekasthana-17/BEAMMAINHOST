@@ -113,6 +113,21 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
           switch (componentType) {
             case "section":
               return <StrapiSection key={index} defaultContent={component} />;
+            case "section-button": {
+              // Render a CTA-only section using Section with actionElement
+              const btn = {
+                url: component.url,
+                buttonText: component.buttonText,
+                isExternal: component.isExternal,
+              };
+              const ctaContent = {
+                title: component.title,
+                subtitle: component.subtitle,
+                buttons: [btn].filter(Boolean),
+                content: null,
+              };
+              return <StrapiSection key={index} defaultContent={ctaContent} />;
+            }
             case "hero":
               // Already rendered above; skip or render inline if desired
               return null;

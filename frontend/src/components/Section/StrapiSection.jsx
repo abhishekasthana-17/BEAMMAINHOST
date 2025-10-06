@@ -121,6 +121,39 @@ const StrapiSection = ({ defaultContent }) => {
     return content;
   };
 
+  // Build optional action element from Strapi buttons
+  let actionElement = null;
+  if (Array.isArray(defaultContent.buttons) && defaultContent.buttons.length) {
+    actionElement = (
+      <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+        {defaultContent.buttons.map((btn, idx) => {
+          const href = btn?.url || "#";
+          const text = btn?.buttonText || btn?.title || "Learn more";
+          const external = !!btn?.isExternal;
+          return (
+            <a
+              key={idx}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              style={{
+                display: "inline-block",
+                padding: "10px 16px",
+                background: "#ff2c9c",
+                color: "#fff",
+                borderRadius: "6px",
+                textDecoration: "none",
+                fontWeight: 600,
+              }}
+            >
+              {text}
+            </a>
+          );
+        })}
+      </div>
+    );
+  }
+
   // Build section props from the defaultContent
   const sectionProps = {
     title: defaultContent.title || "",
@@ -130,7 +163,7 @@ const StrapiSection = ({ defaultContent }) => {
     imageAlt: imageAltText,
     imagePosition: defaultContent.imagePosition,
     backgroundColor: defaultContent.backgroundColor,
-    buttons: defaultContent.buttons,
+    actionElement,
     // Add any other props you need to pass down to the Section component
   };
 

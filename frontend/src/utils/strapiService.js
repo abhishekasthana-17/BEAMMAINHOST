@@ -109,6 +109,22 @@ const fetchFromStrapi = async (endpoint, queryParams = {}) => {
   return data;
 };
 
+// Normalize Strapi v4 response shape to plain objects for consumers
+const normalizeStrapiData = (res) => {
+  if (!res || res.data == null) return res;
+  const { data, meta } = res;
+  if (Array.isArray(data)) {
+    const normalized = data.map((item) =>
+      item && item.attributes ? { id: item.id, ...item.attributes } : item
+    );
+    return { data: normalized, meta };
+  }
+  if (data && data.attributes) {
+    return { data: { id: data.id, ...data.attributes }, meta };
+  }
+  return res;
+};
+
 /**
  * Get a specific page content by slug or title
  * @param {string} contentType - The Strapi content type (collection)
@@ -119,7 +135,8 @@ export const getContent = async (contentType, identifier = null) => {
   console.log(`[getContent] Called with contentType: "${contentType}", identifier: "${identifier}"`);
   
   const finalQueryParams = {
-    populate: '*',
+    // Use deep populate to ensure nested components/media are included
+    populate: 'deep',
   };
 
   // Use the content type as-is for hosted Strapi
@@ -133,7 +150,8 @@ export const getContent = async (contentType, identifier = null) => {
     console.log(`[getContent] Query params:`, finalQueryParams);
 
     try {
-      const slugResult = await fetchFromStrapi(endpoint, finalQueryParams);
+      const slugRaw = await fetchFromStrapi(endpoint, finalQueryParams);
+      const slugResult = normalizeStrapiData(slugRaw);
       console.log(`[getContent] Slug search result:`, slugResult);
       
       if (slugResult.data &&
@@ -147,13 +165,15 @@ export const getContent = async (contentType, identifier = null) => {
       // Try title match if slug lookup fails
     }
 
-    finalQueryParams.filters = { title: { eq: identifier } }; // Retain the deep populate for title lookup too
+    finalQueryParams.filters = { title: { eq: identifier } }; // Retain deep populate for title lookup too
     console.log(`[getContent] Second attempt - filtering by title: "${identifier}"`);
     console.log(`[getContent] Updated query params:`, finalQueryParams);
-    return fetchFromStrapi(endpoint, finalQueryParams);
+    const titleRaw = await fetchFromStrapi(endpoint, finalQueryParams);
+    return normalizeStrapiData(titleRaw);
   } else {
     console.log(`[getContent] No identifier provided, fetching all content`);
-    return fetchFromStrapi(endpoint, finalQueryParams);
+    const raw = await fetchFromStrapi(endpoint, finalQueryParams);
+    return normalizeStrapiData(raw);
   }
 };
 
@@ -220,12 +240,13 @@ export const getFooter = async () => {
   }
 
   try {
-    const footerData = await fetchFromStrapi('footer', {
+    const raw = await fetchFromStrapi('footer', {
       populate: '*'
     });
 
-    if (footerData && footerData.data) {
-      const dataToStore = footerData.data;
+    const normalized = normalizeStrapiData(raw);
+    if (normalized && normalized.data) {
+      const dataToStore = normalized.data;
       sessionStorage.setItem(cacheKey, JSON.stringify(dataToStore));
       return dataToStore;
     }
