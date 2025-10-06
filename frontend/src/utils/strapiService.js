@@ -127,8 +127,10 @@ export const getContent = async (contentType, identifier = null) => {
   console.log(`[getContent] Using endpoint: "${endpoint}"`);
 
   if (identifier) {
-    finalQueryParams.filters = { slug: { eq: identifier } };
-    console.log(`[getContent] First attempt - filtering by slug: "${identifier}"`);
+    // Encode the identifier (slug) for safe URL usage
+    const encodedIdentifier = encodeURIComponent(identifier);
+    finalQueryParams.filters = { slug: { eq: encodedIdentifier } };
+    console.log(`[getContent] First attempt - filtering by slug: "${encodedIdentifier}"`);
     console.log(`[getContent] Query params:`, finalQueryParams);
 
     try {
@@ -237,7 +239,9 @@ export const getFooter = async () => {
 
 export const getPageData = async (page) => {
   try {
-    const response = await axios.get(`${STRAPI_URL}/api/pages?filters[slug][$eq]=${page}&populate=deep`);
+    // Encode the page slug for safe URL usage
+    const encodedPage = encodeURIComponent(page);
+    const response = await axios.get(`${STRAPI_URL}/api/pages?filters[slug][$eq]=${encodedPage}&populate=deep`);
     return response.data;
   } catch {
     return null;

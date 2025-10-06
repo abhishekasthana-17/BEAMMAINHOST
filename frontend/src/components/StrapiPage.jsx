@@ -10,7 +10,8 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
   const navigate = useNavigate();
 
   const contentType = propContentType || urlContentType || "pages";
-  const slug = propSlug || urlSlug;
+  // Decode the slug from the URL for matching and API usage
+  const slug = propSlug || (urlSlug ? decodeURIComponent(urlSlug) : undefined);
 
   const [pageData, setPageData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,25 +21,31 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
     const fetchPageData = async () => {
       if (!contentType || !slug) {
         console.error("Missing contentType or slug for StrapiPage");
-        navigate("/404", { replace: true });
+        // Instead of navigating to /404, show a fallback page
+        setPageData({ title: "Page Not Found", Content: [], fallback: true });
+        setLoading(false);
         return;
       }
 
       try {
         setLoading(true);
-        console.log(`[StrapiPage] Fetching contentType: "${contentType}", slug: "${slug}"`);
+        // Debug: Print requested slug and all available slugs
+        console.log('[StrapiPage] Requested slug:', slug);
         const response = await getContent(contentType, slug);
         console.log("🔥 Full Strapi response:", response);
 
         const pages = response?.data || [];
+        console.log('[StrapiPage] Available slugs:', pages.map(p => p?.attributes?.slug));
+        // Case-insensitive matching (slug is already decoded)
         const matchingPage = pages.find(
-          (page) => page?.attributes?.slug === slug
+          (page) => page?.attributes?.slug?.toLowerCase() === slug?.toLowerCase()
         );
         console.log("🔍 Matching page:", matchingPage);
 
         if (!matchingPage) {
-          console.warn(`No matching page found for slug "${slug}"`);
-          navigate("/404", { replace: true });
+          // Instead of navigating to /404, show a fallback page
+          setPageData({ title: "Page Not Found", Content: [], fallback: true });
+          setLoading(false);
           return;
         }
 
@@ -47,9 +54,8 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
         setPageData(attributes);
       } catch (err) {
         console.error("Error fetching Strapi page:", err);
-        setError(err);
-        navigate("/404", { replace: true });
-      } finally {
+        // Instead of navigating to /404, show a fallback page
+        setPageData({ title: "Page Not Found", Content: [], fallback: true });
         setLoading(false);
       }
     };

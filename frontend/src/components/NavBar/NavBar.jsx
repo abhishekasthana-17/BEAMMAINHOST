@@ -150,7 +150,7 @@ const NavBar = () => {
                   item.related &&
                   item.related.slug
                 ) {
-                  path = `/${item.related.slug.trim()}`;
+                  path = `/${encodeURIComponent(item.related.slug.trim())}`;
                 } else if (item.type === "EXTERNAL" && item.externalPath) {
                   path = item.externalPath.trim();
                   if (
@@ -204,7 +204,7 @@ const NavBar = () => {
                                 subItem.related &&
                                 subItem.related.slug
                               ) {
-                                subPath = `/${subItem.related.slug.trim()}`;
+                                subPath = `/${encodeURIComponent(subItem.related.slug.trim())}`;
                               } else if (
                                 subItem.type === "EXTERNAL" &&
                                 subItem.externalPath
@@ -275,7 +275,7 @@ const NavBar = () => {
                                                 grandchildItem.related &&
                                                 grandchildItem.related.slug
                                               ) {
-                                                grandchildPath = `/${grandchildItem.related.slug.trim()}`;
+                                                grandchildPath = `/${encodeURIComponent(grandchildItem.related.slug.trim())}`;
                                               } else if (
                                                 grandchildItem.type ===
                                                   "EXTERNAL" &&
