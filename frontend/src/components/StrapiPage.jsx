@@ -90,7 +90,7 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
       {pageData.hero && <StrapiHero defaultContent={pageData.hero} />}
 
       {/* Dynamic zone rendering */}
-      {Array.isArray(pageData.Content) && pageData.Content.length > 0 ? (
+      {(Array.isArray(pageData.Content) && pageData.Content.length > 0 ?
         pageData.Content.map((component, index) => {
           const componentType = component.__component?.split(".").pop();
 
@@ -113,7 +113,7 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
               );
           }
         })
-      ) : (
+      :
         <p style={{ padding: "2rem", textAlign: "center" }}>
           No content available for this page.
         </p>
