@@ -52,6 +52,7 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
         const attributes = matchingPage;
         console.log("📄 Page attributes:", attributes);
         setPageData(attributes);
+        setLoading(false);
       } catch (err) {
         console.error("Error fetching Strapi page:", err);
         // Instead of navigating to /404, show a fallback page
@@ -75,7 +76,7 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
     <div className="strapi-page">
       {/* Optional page title */}
       <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
-        {pageData.title || "Untitled Page"}
+        {pageData.Title || pageData.title || "Untitled Page"}
       </h1>
 
       {/* SEO meta tags */}
@@ -86,17 +87,35 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
         />
       )}
 
-      {/* Hero section */}
-      {pageData.hero && <StrapiHero defaultContent={pageData.hero} />}
+      {/* Hero section (may be inside dynamic zone) */}
+      {(() => {
+        const zones = Array.isArray(pageData.Content)
+          ? pageData.Content
+          : Array.isArray(pageData.content)
+          ? pageData.content
+          : [];
+        const heroFromZone = zones.find(
+          (c) => typeof c.__component === "string" && c.__component.endsWith(".hero")
+        );
+        const heroContent = pageData.hero || heroFromZone;
+        return heroContent ? <StrapiHero defaultContent={heroContent} /> : null;
+      })()}
 
       {/* Dynamic zone rendering */}
-      {(Array.isArray(pageData.Content) && pageData.Content.length > 0 ?
-        pageData.Content.map((component, index) => {
+      {(Array.isArray(pageData.Content) && pageData.Content.length > 0
+        ? pageData.Content
+        : Array.isArray(pageData.content) && pageData.content.length > 0
+        ? pageData.content
+        : []
+      ).map((component, index) => {
           const componentType = component.__component?.split(".").pop();
 
           switch (componentType) {
             case "section":
               return <StrapiSection key={index} defaultContent={component} />;
+            case "hero":
+              // Already rendered above; skip or render inline if desired
+              return null;
             default:
               return (
                 <div
@@ -112,12 +131,7 @@ const StrapiPage = ({ contentType: propContentType, slug: propSlug }) => {
                 </div>
               );
           }
-        })
-      :
-        <p style={{ padding: "2rem", textAlign: "center" }}>
-          No content available for this page.
-        </p>
-      )}
+        })}
     </div>
   );
 };

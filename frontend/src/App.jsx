@@ -46,10 +46,9 @@ import MainLayout from "./components/Layout/MainLayout";
 import ChatBot from "./components/ChatBot/ChatBot";
 import ScrollToTop from "./components/ScrollToTop";
 import StrapiPage from "./components/StrapiPage";
-// import StrapiAboutPage from "./components/StrapiAboutPage";
+import StrapiAboutPage from "./components/StrapiAboutPage";
 import NewsletterPopup from "./components/NewsletterPopup/NewsletterPopup";
-// import LocomotiveScroll from 'locomotive-scroll';
-// import 'locomotive-scroll/dist/locomotive-scroll.css';
+
 
 function App() {
   // Locomotive Scroll removed
@@ -60,15 +59,15 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="about-us" element={<AboutPage />} />
-            <Route path="news" element={<NewsPage />} />
-            <Route path="careers" element={<CareersPage />} />
-            <Route path="careers/spontaneous-application" element={<ApplyPage />} />
+            <Route path="about-us" element={<StrapiPage contentType="pages" slug="about-us" />} />
+            <Route path="news" element={<StrapiPage contentType="pages" slug="beamnews" />} />
+            <Route path="careers" element={<StrapiPage contentType="pages" slug="careers" />} />
+            <Route path="careers/spontaneous-application" element={<StrapiPage contentType="pages" slug="careers/spontaneous-application" />} />
             <Route path="careers/apply" element={<ApplyPage />} />
             <Route path="careers/apply" element={<CareerApplicationPage />} />
-            <Route path="investors" element={<InvestorsPage />} />
+            <Route path="investors" element={<StrapiPage contentType="pages" slug="forinvestors" />} />
             <Route path="technology-partnerships" element={<TechnologyPartnersPage />} />
-            <Route path="banks" element={<Banks />} />
+            <Route path="banks" element={<StrapiPage contentType="pages" slug="banks" />} />
             <Route path="software-partners" element={<SoftwarePartners />} />
             <Route path="visionary-developers" element={<VisionaryDev />} />
             <Route path="local-partners" element={<LocalPartnersPage />} />
@@ -76,11 +75,11 @@ function App() {
             <Route path="partnerships" element={<PartnershipsPage />} />
             <Route path="pay-in-store" element={<PayInStorePage />} />
             <Route path="pay-online" element={<PayOnlinePage />} />
-            <Route path="local-store" element={<BeamForBusiness />} />
+            <Route path="local-store" element={<StrapiPage contentType="pages" slug="local-store" />} />
             <Route path="terms-and-conditions" element={<TermsPage />} />
             <Route path="privacy-policy" element={<PrivacyPage />} />
             <Route path="contacts" element={<ContactPage />} />
-            <Route path="help-center" element={<HelpCenter />} />
+            <Route path="help-center" element={<StrapiPage contentType="pages" slug="help-center" />} />
             <Route path="ls-inst-form" element={<LsInstallationForm />} />
             <Route path="os-inst-form" element={<OsInstallationForm />} />
             <Route path="investors-form" element={<InvestorsForm />} />
@@ -148,6 +147,11 @@ function App() {
             <Route path="404" element={<NotFoundPage />} />
             {/* Catch-all route for dynamic pages - Commented out for static conversion */}
             <Route path=":slug" element={<StrapiPage contentType="pages" />} />
+            {/* Additional explicit Strapi-backed routes */}
+            <Route path="beamnews" element={<StrapiPage contentType="pages" slug="beamnews" />} />
+            <Route path="forinvestors" element={<StrapiPage contentType="pages" slug="forinvestors" />} />
+            <Route path="beamwallet&banks" element={<StrapiPage contentType="pages" slug="beamwallet&banks" />} />
+            <Route path="for-financial-institutions" element={<StrapiPage contentType="pages" slug="for-financial-institutions" />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
